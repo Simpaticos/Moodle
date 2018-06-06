@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 public class LectorArchivo {
 	
+
 	
 	public ArrayList<Participante> obtenerDatosParticipantes(String filename ) throws FileNotFoundException{
 		ArrayList<Participante> participantes = new ArrayList<>();
