@@ -10,7 +10,6 @@ public class Participante {
 	private ArrayList<String> subhabilidades;
 	private int[] contSubhabilidades;
 	
-	
 	public Participante(String n, String id, String idDiscucion) {
 		subhabilidades = new ArrayList<>();
 		contSubhabilidades = new int[8];
