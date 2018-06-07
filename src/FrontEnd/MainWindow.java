@@ -23,7 +23,7 @@ public class MainWindow extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/FrontEnd/Main.fxml")); 
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/FrontEnd/MainSelectPane.fxml")); 
         MainWindowController mainWindowController = new MainWindowController();
         loader.setController(mainWindowController); 
         Pane mainPane = (Pane) loader.load(); 

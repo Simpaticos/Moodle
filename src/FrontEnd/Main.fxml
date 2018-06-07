@@ -60,7 +60,7 @@
                         <Insets top="30.0" />
                      </VBox.margin>
                   </Label>
-                  <ListView fx:id="listaCursos" opacity="0.67" prefHeight="367.0" prefWidth="189.0" style="-fx-background-color: #33374C; -fx-control-inner-background: #33374C; -fx-selection-bar: #5b5e6f; -fx-control-inner-alignment: center;">
+                  <ListView fx:id="listaCursos" opacity="0.67" prefHeight="367.0" prefWidth="189.0" style="-fx-background-color: #33374C; -fx-control-inner-background: #33374C; -fx-selection-bar: #5b5e6f;">
                      <VBox.margin>
                         <Insets top="30.0" />
                      </VBox.margin>
