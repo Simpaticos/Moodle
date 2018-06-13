@@ -1,9 +1,10 @@
 package DB;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Subhabilidad {
+
+
 	private String nombre;
 	private ArrayList<String> atributos;
 	private int[] contadorAtributos;
@@ -74,14 +75,25 @@ public class Subhabilidad {
 		String linea = "Subhabilidad: " + nombre + "\n";
 		int i = 0;
 		for (String s : atributos) {
-			linea = linea + " atributo " + s + "cant "+ contadorAtributos[i] + "\n";
+			linea = linea + " atributo " + s + ", cantidad "+ contadorAtributos[i] + "\n";
 			i++;
 		}
 		linea = linea + "\n";
 		return linea;
 	}
 
-	
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+		// TODO Auto-generated method stub
+		String[] values = new String[atributos.size() + 1];
+		values[0] = nombre;
+		for (int i=1; i<atributos.size(); i++)
+		{
+			values[i] = atributos.get(i-1);
+		}
+		Subhabilidad sh = new Subhabilidad(values);
+		return sh;
+	}
 	
 	
 	
