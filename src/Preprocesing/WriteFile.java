@@ -5,13 +5,16 @@ import java.util.*;
 public class WriteFile
 {
 	public void createFile(String relation, List<String> subAbilities) {
- 
+		/**
+		 * Este metodo crea el archivo arff con los atributos y los datos correspondiente
+		 * Es necesario parasar por parametro el nombre de la relacion como asi tambien los atributos (sub habilidades)
+		 * proximamente se añadiran los datos**/
     	String aux = "";
     	FileWriter fichero = null;
         PrintWriter pw = null;
         try
         {
-            fichero = new FileWriter("F:/"+relation+".txt");
+            fichero = new FileWriter("F:/"+relation+".arff");
             pw = new PrintWriter(fichero);
             
             pw.println("@relations " + relation);
@@ -40,11 +43,14 @@ public class WriteFile
     public static void main(String[] args)
     {
     	WriteFile wf = new WriteFile();
-    	String relation = "demis";
+    	String relation = "conflicto";
     	List<String> sh = new ArrayList<>();
     	for (int i = 0; i < 10; i++)
     		sh.add(String.valueOf(i));
+    	
+    	/**Prueba del metodo**/
     	wf.createFile(relation, sh);
+    	
     	System.out.println("Hola");
     }
 }
