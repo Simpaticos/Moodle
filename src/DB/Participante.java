@@ -71,10 +71,22 @@ public class Participante {
 				+ subhabilidades + "]";
 	}
 
+	public int getAtributo(String subhabilidad, String atributo) {
+		int posSubhabilidad = getPosSubhabilidad(subhabilidad);		
+		return subhabilidades.get(posSubhabilidad).getAtrbuto(atributo);
+	}
 	
-
+	public int getPosSubhabilidad(String subhabilidad) {
+		for (Subhabilidad sh: subhabilidades) {
+			if (sh.getNombre().equals(subhabilidad))
+				return subhabilidades.indexOf(sh);
+		}
+		return 0;
+	}
 	
-	
+	public ArrayList<String> getAtributos (String subhabilidad) {
+		return subhabilidades.get(getPosSubhabilidad(subhabilidad)).getAtributos();
+	}
 }
 
 

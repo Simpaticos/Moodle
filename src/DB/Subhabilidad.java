@@ -95,6 +95,12 @@ public class Subhabilidad {
 		return sh;
 	}
 	
+	public int getAtrbuto(String atributo) {
+		return contadorAtributos[atributos.lastIndexOf(atributo)];
+	}
 	
-	
+	public int getPos(String atributo) {
+		return atributos.indexOf(atributo);
+		
+	}
 }

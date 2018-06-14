@@ -13,6 +13,11 @@ public class ExcelGenerator {
 			ArrayList<Participante> participantes;
 			participantes = lector.obtenerDatosParticipantes("prueba.txt");
 			System.out.println(participantes);
+			Participante p = participantes.get(1);
+			ArrayList<String> atributos = p.getAtributos("Tarea");
+			System.out.println(atributos);
+			System.out.println(p.getAtributo("Tarea", atributos.get(0)));
+			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
