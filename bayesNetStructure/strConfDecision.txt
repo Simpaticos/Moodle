@@ -1,6 +1,6 @@
 @relation ConfEvaluacion
 
-@attribute Entrenar {Reconocimiento1,Reconocimiento2}
+@attribute Entrenar {Reconocimiento1,Reconocimiento2,Nada}
 @attribute Reconocimiento1 {Bajo,Medio,Alto}
 @attribute Reconocimiento2 {Bajo,Medio,Alto}
 

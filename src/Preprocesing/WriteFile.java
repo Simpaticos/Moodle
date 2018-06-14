@@ -2,8 +2,14 @@ package Preprocesing;
 import java.io.*;
 import java.util.*;
 
+import DB.*;
+
 public class WriteFile
 {
+	private ArrayList< ArrayList<String> > lineasDeDatos = new ArrayList< ArrayList<String> >();
+
+	private ArrayList<SubhabilidadConMargenes> subHabilidades;
+	
 	public void createFile(String relation, List<String> subAbilities) {
 		/**
 		 * Este metodo crea el archivo arff con los atributos y los datos correspondiente
@@ -14,7 +20,7 @@ public class WriteFile
         PrintWriter pw = null;
         try
         {
-            fichero = new FileWriter("F:/"+relation+".arff");
+            fichero = new FileWriter("C:/Facultad/Ingenieria en Sistemas/Ingenieria de Software/Proyecto/Moodle/"+relation+".arff");
             pw = new PrintWriter(fichero);
             
             pw.println("@relations " + relation);
@@ -53,4 +59,72 @@ public class WriteFile
     	
     	System.out.println("Hola");
     }
+    
+    
+    public void loadSubhabilityStructure(File dir)throws Exception {
+		BufferedReader reader = new BufferedReader(
+									new FileReader(dir));
+		ArrayList<SubhabilidadConMargenes> result = new ArrayList<SubhabilidadConMargenes>();
+		boolean eOF=false;
+		while(!eOF) {
+			String linea = reader.readLine();
+			if(linea==null)
+				eOF = true;
+			else {
+				String[] splitString = linea.split(":");
+				SubhabilidadConMargenes newSubH = new SubhabilidadConMargenes(splitString[0]);
+				ArrayList<String> attr = new ArrayList<String>();
+				String[] attrStr = splitString[1].split(",");
+				for(int i=0;i<attrStr.length;i++)
+					attr.add(attrStr[i]);
+				newSubH.setAtributos(attr);
+				String[] limites = splitString[2].split(",");
+				newSubH.SetMinYMax(Double.parseDouble(limites[0]), Double.parseDouble(limites[0]));
+				result.add(newSubH);
+				}
+			}
+		subHabilidades = result;
+		reader.close();
+    }
+    
+    public void crearLineasDeArchivos(ArrayList<Participante> p) {
+    	for(int i=0;i<6;i++) {
+    		lineasDeDatos.add(i, new ArrayList<String>());
+    		for(int j=0;j<p.size();j++) {
+    			ArrayList<SubhabilidadConMargenes> subH = subHabilidadesPorConflicto(nomConflicto(i));
+    			String linea = "?,";
+    			for(int k=0;k<subH.size();k++) {
+    				ArrayList<String> attr = subH.get(k).getAtributos();
+    				double cont=0;
+    				for(int l=0;l<attr.size();l++) {
+    					cont += p.get(j).getAtributo(subH.get(k).getNombre().split("-")[1], attr.get(l));
+    				}
+    				linea += subH.get(k).calcularValor((cont/(p.get(j).getParticipacionTotal()))*100) + ",";	
+    			}
+    			linea = linea.substring(0, linea.length()-1);
+    			lineasDeDatos.get(i).add(linea);
+    		}	
+    	}
+    }
+    public String nomConflicto(int i) {
+    	switch(i) {
+	    	case 0:return "comunicacion";
+	    	case 1:return "evaluacion";
+	    	case 2:return "control";
+	    	case 3:return "decision";
+	    	case 4:return "tension";
+	    	case 5:return "reintegracion";
+    		}
+    	return null;
+    }
+    public ArrayList<SubhabilidadConMargenes> subHabilidadesPorConflicto(String s){
+    	ArrayList<SubhabilidadConMargenes> result = new ArrayList<SubhabilidadConMargenes>();
+    	for(int i=0;i<subHabilidades.size();i++) {
+    		if(subHabilidades.get(i).getNombre().split("-")[0].equals(s))
+    			result.add(subHabilidades.get(i));
+    	}
+    	return result;
+    }
+    
+    	
 }

@@ -1,6 +1,6 @@
 @relation ConfEvaluacion
 
-@attribute Entrenar {Motivar,Mantenimiento,Tarea,Argumentacion}
+@attribute Entrenar {Motivar,Mantenimiento,Tarea,Argumentacion,Nada}
 @attribute Motivar {Bajo,Medio,Alto}
 @attribute Mantenimiento {Bajo,Medio,Alto}
 @attribute Tarea {Bajo,Medio,Alto}
