@@ -1,0 +1,61 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+#clickme { /* .button es para aplicar a todos los botones el mismo estilo */ 
+	-fx-font-size: 20px;
+	-fx-background-color: rgba(255, 255, 255, .80);
+	-fx-text-fill:  #ff69b4;
+	-fx-padding: 6 6 6 6;
+	-fx-border-radius: 8;
+	-fx-font-weight: bold;
+}
+
+#mymessage {
+	-fx-font-size: 20px;
+	-fx-background-color: rgba(255, 255, 255, .80);
+	-fx-text-fill:  #ff69b4;
+	-fx-padding: 6 6 6 6;
+	-fx-border-radius: 8;
+	-fx-font-weight: bold;
+}
+
+.root {
+	-fx-background-color: gray;
+}
+
+#detail-header {
+	-fx-background-color: #154360;
+	-fx-pref-height: 70px;
+}
+
+.card {
+	-fx-background-color: #283747;
+	/*-fx-pref-width: 250px;*/
+	/*-fx-pref-height: 300px;*/
+}
+
+.barChart {
+	-fx-background-color: transparent;
+}
+
+.chart-horizontal-grid-lines {
+    -fx-stroke: transparent;
+}
+.chart-vertical-grid-lines {
+    -fx-stroke: transparent;
+}
+.chart-plot-background {
+    -fx-background-color: transparent;
+}
+
+.message {
+	-fx-padding: 2.5px 15px;
+}
+
+.wrapper {
+	-fx-background-color: rgba(26, 188, 156, 0.8);
+	-fx-border-radius: 15px;
+}
+
+.axis-label {
+   -fx-text-fill: red; 
+}

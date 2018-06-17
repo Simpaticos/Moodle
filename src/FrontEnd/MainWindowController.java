@@ -1,40 +1,54 @@
 package FrontEnd;
 
-import java.net.URL;
-import java.util.Random;
-import java.util.ResourceBundle;
+import java.text.DateFormatSymbols;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
 
-import javafx.event.ActionEvent;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.chart.BarChart;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.layout.HBox;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.XYChart;
 
-public class MainWindowController implements Initializable {
-	
+public class MainWindowController{
 
-	@FXML
-	private ListView<String> listaCursos;
-	@FXML
-	private HBox bBoxSuperior;
-	
-	
-	public  MainWindowController() {
-		
-	}
-	
+    @FXML
+    private BarChart<String, Integer> barChart;
+    @FXML
+    private CategoryAxis xAxis;
+    private ObservableList<String> list = FXCollections.observableArrayList();
+    
+    @FXML
+    private void initialize() {
 
+        String[] skills = new String[6];
+        
+        skills[0] = "Hab 1";
+        skills[1] = "Hab 2";
+        skills[2] = "Hab 3";
+        skills[3] = "Hab 4";
+        skills[4] = "Hab 5";
+        skills[5] = "Hab 6";
 
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		listaCursos.getItems().addAll("Curso1", "Curso2", "Curso3", "Curso4");
-		bBoxSuperior.setAlignment(Pos.CENTER_LEFT);
+        list.addAll(Arrays.asList(skills));
+        System.out.println("hello");
 
-		
-		
-	}
+        xAxis.setCategories(list);
+
+        XYChart.Series<String, Integer> series = new XYChart.Series<>();
+        
+        System.out.println("hello");
+        
+        series.getData().add(new XYChart.Data<>("Hab 1", 100));
+        series.getData().add(new XYChart.Data<>("Hab 2", 50));
+        series.getData().add(new XYChart.Data<>("Hab 3", 70));
+        series.getData().add(new XYChart.Data<>("Hab 4", 20));
+        series.getData().add(new XYChart.Data<>("Hab 5", 25));
+        series.getData().add(new XYChart.Data<>("Hab 6", 80));
+        
+        barChart.getData().add(series);
+    }
+
 }
