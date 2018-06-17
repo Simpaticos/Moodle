@@ -1,6 +1,6 @@
 @relation ConfEvaluacion
 
-@attribute Entrenar {Reconocimiento,Argumentacion,Mantenimiento}
+@attribute Entrenar {Reconocimiento,Argumentacion,Mantenimiento,Nada}
 @attribute Reconocimiento {Bajo,Medio,Alto}
 @attribute Argumentacion {Bajo,Medio,Alto}
 @attribute Mantenimiento {Bajo,Medio,Alto}

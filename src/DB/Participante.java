@@ -1,28 +1,30 @@
 package DB;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Participante {
+	private String curso;
 	private String nombre;
 	private String id;
 	private String idDiscusion;
-	private ArrayList<String> subhabilidades;
-	private int[] contSubhabilidades;
+	private ArrayList<Subhabilidad> subhabilidades;
 	
-	public Participante(String n, String id, String idDiscusion) {
+	public Participante(String curso, String n, String id, String idDiscusion) throws FileNotFoundException {
+		Scanner scan = new Scanner(new FileInputStream("SubabilityStructure.txt"));
 		subhabilidades = new ArrayList<>();
-		contSubhabilidades = new int[8];
-		for (int i=0; i< 8; i++)
-			contSubhabilidades[i] = 0;
-		subhabilidades.add("Mediacion");
-		subhabilidades.add("Argumentacion");
-		subhabilidades.add("Motivar");
-		subhabilidades.add("Informar");
-		subhabilidades.add("Requerir");
-		subhabilidades.add("Reconocimiento");
-		subhabilidades.add("Mantenimiento");
-		subhabilidades.add("Tarea");
+		Subhabilidad sub;
+		while(scan.hasNextLine()) {
+			String line = scan.nextLine();
+			String[] values = line.split(", ");
+			sub = new Subhabilidad(values);
+			subhabilidades.add(sub);
+		}
+		scan.close();
+		this.curso = curso;
 		this.nombre = n;
 		this.id = id;
 		this.idDiscusion = idDiscusion;
@@ -52,10 +54,9 @@ public class Participante {
 		this.idDiscusion = newId;
 	}
 	
-	public void incrementarSubhabilidad(String subhabilidad) {
-		int valor = contSubhabilidades[subhabilidades.indexOf(subhabilidad)];
-		valor++;
-		contSubhabilidades[subhabilidades.indexOf(subhabilidad)] = valor;
+	public void incrementarSubhabilidad(String subhabilidad, String atributo) {
+		int pos = subhabilidades.indexOf(new Subhabilidad(subhabilidad));
+		subhabilidades.get(pos).sumarAtributo(atributo);
 	}
 
 	public boolean equals(Object participant) {
@@ -66,12 +67,32 @@ public class Participante {
 
 	@Override
 	public String toString() {
-		return "Participante [nombre=" + nombre + ", id=" + id + ", idDiscusion=" + idDiscusion + ", subhabilidades="
-				+ subhabilidades + ", contSubhabilidades=" + Arrays.toString(contSubhabilidades) + "]";
+		return "Participante" +"\n"+  "[nombre=" + nombre + ", id=" + id + ", idDiscusion=" + "\n" + "idDiscusion" + "subhabilidades="
+				+ subhabilidades + "]";
+	}
+
+	public int getAtributo(String subhabilidad, String atributo) {
+		int posSubhabilidad = getPosSubhabilidad(subhabilidad);		
+		return subhabilidades.get(posSubhabilidad).getAtrbuto(atributo);
 	}
 	
+	public int getPosSubhabilidad(String subhabilidad) {
+		for (Subhabilidad sh: subhabilidades) {
+			if (sh.getNombre().equals(subhabilidad))
+				return subhabilidades.indexOf(sh);
+		}
+		return 0;
+	}
 	
-	
+	public ArrayList<String> getAtributos (String subhabilidad) {
+		return subhabilidades.get(getPosSubhabilidad(subhabilidad)).getAtributos();
+	}
+	public double getParticipacionTotal() {
+		double result = 0;
+		for(int i=0;i<subhabilidades.size();i++) 
+			result += subhabilidades.get(i).getSuma();
+		return result;
+	}
 }
 
 
