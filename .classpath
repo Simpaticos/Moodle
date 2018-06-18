@@ -4,6 +4,14 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaFx"/>
 	<classpathentry kind="lib" path="lib/javafx-2018.5.0.jar"/>
-	<classpathentry kind="lib" path="lib/weka-dev-3.7.10.jar"/>
+	<classpathentry kind="lib" path="lib/weka.jar"/>
+	<classpathentry kind="lib" path="lib/lib/arpack_combined_all.jar"/>
+	<classpathentry kind="lib" path="lib/lib/bounce.jar"/>
+	<classpathentry kind="lib" path="lib/lib/commons-compress-1.10.jar"/>
+	<classpathentry kind="lib" path="lib/lib/core.jar"/>
+	<classpathentry kind="lib" path="lib/lib/JFlex.jar"/>
+	<classpathentry kind="lib" path="lib/lib/junit.jar"/>
+	<classpathentry kind="lib" path="lib/lib/mtj.jar"/>
+	<classpathentry kind="lib" path="lib/resources/bounce-src.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

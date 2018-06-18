@@ -1,8 +1,0 @@
-Mediacion, Mediacion docente
-Argumentacion, Conciliar, Concertar, Discrepar, Ofrecer Alternativa, Inferir, Suponer, Proponer excepciones, Dudar
-Motivar, Animar, Reforzar
-Informar, Parafrasear, Guiar, Sugerir, Elaborar, Explicar-Clarificar, Justificar, Afirmar
-Requerir, Informacion, Elaboracion, Clarificacion, Justificacion, Opinion, Ilustracion
-Reconocimiento, Apreciacion, Aceptacion-Confirmacion, Rechazo
-Mantenimiento, Requerir atencion, Sugerir accion, Requerir confirmacion, Atender, Disculparse
-Tarea, Coordinar procesos grupales, Requerir cambio de enfoque, Resumir informacion, Finalizar participacion
