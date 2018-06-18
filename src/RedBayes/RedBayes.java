@@ -3,6 +3,8 @@ package RedBayes;
 //import weka.classifiers.bayes.NaiveBayesUpdateable;
 //import weka.core.Instance;
 import weka.classifiers.AbstractClassifier;
+import weka.core.Instance;
+import javafx.util.Pair;
 //import weka.classifiers.bayes.BayesNet;
 //import weka.classifiers.bayes.NaiveBayesUpdateable;
 import weka.core.Instances;
@@ -58,4 +60,9 @@ public abstract class RedBayes {
 		Instances instances = loadFromArffFile(instancesDir);
 		this.classifyInstances(instances, resultDir);
 	}
+	
+	public Instances getStructure() {
+		return this.structure;
+	}
+	public abstract Pair<String,Double> classifyOne(Instance instance) throws Exception;
 }

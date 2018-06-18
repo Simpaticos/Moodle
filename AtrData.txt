@@ -1,5 +1,5 @@
 comunicacion-informar:parafrasear,explicar:7,15
-comunicacion-tarea:resumir_informacion::7,15
+comunicacion-tarea:resumir_informacion:7,15
 comunicacion-requerir:informacion,clarificacion,ilustracion:2,11
 evaluacion-argumentacion:suponer,conciliar,concertar,inferir,proponer_excepciones:4.2,8
 evaluacion-mediar:mediacion_docente:4.2,8

@@ -1,5 +1,6 @@
 package RedBayes;
 
+import weka.core.Instance;
 import weka.core.Instances;
 import weka.core.converters.ArffLoader;
 
@@ -11,6 +12,7 @@ import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.ObjectInputStream;
 
+import javafx.util.Pair;
 import weka.classifiers.bayes.BayesNet;
 
 public class RedBayesNet extends RedBayes {
@@ -31,7 +33,6 @@ public class RedBayesNet extends RedBayes {
 		ObjectInputStream oi = new ObjectInputStream(fi);
 		this.red = (BayesNet)oi.readObject();
 		this.structure = new Instances(((BayesNet)red).m_Instances,0);
-		System.out.println(structure.toString());
 		oi.close();
 		fi.close();
 	}
@@ -54,12 +55,6 @@ public class RedBayesNet extends RedBayes {
 					aux = clsLabel[j];
 					ind = j;
 				}
-			if(results.instance(i)==null)
-				System.out.println("results.instance(i)");
-			if(structure.classAttribute()==null)
-				System.out.println("structure.classAttribute()");
-			if(structure.classAttribute().value(ind)==null)
-				System.out.println("structure.classAttribute().value(ind)");
 			results.instance(i).setClassValue(structure.classAttribute().value(ind));
 			}
 		BufferedWriter writer = new BufferedWriter(
@@ -68,5 +63,19 @@ public class RedBayesNet extends RedBayes {
 		writer.newLine();
 		writer.flush();
 		writer.close();
+	}
+
+	@Override
+	public Pair<String,Double> classifyOne(Instance instance) throws Exception {
+		double[] clsLabel = ((BayesNet)red).distributionForInstance(instance);
+		double aux=0;
+		int ind=0;
+		for(int i=0;i<clsLabel.length;i++)
+			if(clsLabel[i]>aux) {
+				aux = clsLabel[i];
+				ind = i;
+			}
+		Pair<String,Double> result = new Pair<String,Double>(structure.classAttribute().value(ind),new Double(aux));
+		return result;
 	}
 }
