@@ -93,6 +93,9 @@ public class Participante {
 			result += subhabilidades.get(i).getSuma();
 		return result;
 	}
+	public ArrayList<Subhabilidad> getSubHabilidades(){
+		return subhabilidades;
+	}
 }
 
 

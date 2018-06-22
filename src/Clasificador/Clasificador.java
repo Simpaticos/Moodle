@@ -13,6 +13,14 @@ public class Clasificador
 {
 	private RedBayesNet[] redes = new RedBayesNet[6];
 	private ArrayList<SubhabilidadConMargenes> subHabilidades;
+	private Hashtable<Participante,Hashtable<String,Pair<String,Double>>> resultados;
+	public Hashtable<Participante, Hashtable<String, Pair<String, Double>>> getResultados() {
+		return resultados;
+	}
+	public void setResultados(Hashtable<Participante, Hashtable<String, Pair<String, Double>>> resultados) {
+		this.resultados = resultados;
+	}
+
 	public Clasificador()throws Exception{
 		/*redes[0] = new RedBayesNet("./bayesNetStructure/strConfComunicacion.txt");
 		redes[1] = new RedBayesNet("./bayesNetStructure/strConfControl.txt");
@@ -26,68 +34,43 @@ public class Clasificador
 		redes[3].serializeRed(new File("./bayesNet/ConfEvaluacion.bayesNet"));
 		redes[4].serializeRed(new File("./bayesNet/ConfReduccionDeTension.bayesNet"));
 		redes[5].serializeRed(new File("./bayesNet/ConfReintegracion.bayesNet"));*/
-		redes[0] = new RedBayesNet(new File("./bayesNet/confComunicacion.bayesNet"));
-		redes[1] = new RedBayesNet(new File("./bayesNet/ConfControl.bayesNet"));
-		redes[2] = new RedBayesNet(new File("./bayesNet/ConfDecision.bayesNet"));
-		redes[3] = new RedBayesNet(new File("./bayesNet/ConfEvaluacion.bayesNet"));
-		redes[4] = new RedBayesNet(new File("./bayesNet/ConfReduccionDeTension.bayesNet"));
-		redes[5] = new RedBayesNet(new File("./bayesNet/ConfReintegracion.bayesNet"));
-		this.loadSubhabilityStructure(new File("AtrData.txt"));
+		String path = new File(".").getAbsolutePath();
+		path=path.substring(0, path.length()-2)+"/";
+		redes[0] = new RedBayesNet(new File(path+"bayesNet\\confComunicacion.bayesNet"));
+		redes[1] = new RedBayesNet(new File(path+"bayesNet\\ConfControl.bayesNet"));
+		redes[2] = new RedBayesNet(new File(path+"bayesNet\\ConfDecision.bayesNet"));
+		redes[3] = new RedBayesNet(new File(path+"bayesNet\\ConfEvaluacion.bayesNet"));
+		redes[4] = new RedBayesNet(new File(path+"bayesNet\\ConfReduccionDeTension.bayesNet"));
+		redes[5] = new RedBayesNet(new File(path+"bayesNet\\ConfReintegracion.bayesNet"));
+		this.loadSubhabilityStructure(new File(path+"AtrData.txt"));
+		
+		/*
+		 * Al lado del .jar ejecutable deben estar las carpetas:
+		 * 				bayesNet
+		 * 				bayesNetStructure
+		 * y el archivo:
+		 * 				AtrData.txt								*/
+				
+		resultados = new Hashtable<>();
 		
 				
 	}
 	
-	public void createFile(String relation, List<String> subAbilities) {
-		/**
-		 * Este metodo crea el archivo arff con los atributos y los datos correspondiente
-		 * Es necesario parasar por parametro el nombre de la relacion como asi tambien los atributos (sub habilidades)
-		 * proximamente se añadiran los datos**/
-    	String aux = "";
-    	FileWriter fichero = null;
-        PrintWriter pw = null;
-        try
-        {
-            fichero = new FileWriter("C:/Facultad/Ingenieria en Sistemas/Ingenieria de Software/Proyecto/Moodle/"+relation+".arff");
-            pw = new PrintWriter(fichero);
-            
-            pw.println("@relations " + relation);
-            for (String s: subAbilities)
-            	 aux +=", "+s;
-            aux = (aux.length() > 0) ? "{" + aux.substring(2, aux.length()) + "}" : ""; 
-            pw.println("@atribute Entrenar " + aux);
-            
-            for (String s: subAbilities)
-            	pw.println("@atribute "+ s + " {Bajo, Medio, Alto}");
-            pw.println("@data");
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-           try {
-           // Nuevamente aprovechamos el finally para 
-           // asegurarnos que se cierra el fichero.
-           if (null != fichero)
-              fichero.close();
-           } catch (Exception e2) {
-              e2.printStackTrace();
-           }
-        }
-	}
-    public static void main(String[] args)
-    {
+    public static void main(String[] args){
     	try {
-    	Clasificador wf = new Clasificador();
-    	/*String relation = "conflicto";
-    	List<String> sh = new ArrayList<>();
-    	for (int i = 0; i < 10; i++)
-    		sh.add(String.valueOf(i));*/
-    	
-    	/**Prueba del metodo**/
-    	/*wf.createFile(relation, sh);
-    	
-    	System.out.println("Hola"); */
-    	}catch(Exception e){e.printStackTrace();};
-    }
+    		Clasificador clasificador = new Clasificador();
+    		/*args[0] direccion de los datos extraidos de la base de datos*/
+    		/*args[1] directorio a donde se escriben los resultados en formato .json*/
+    		ArrayList<Participante> participantes = LectorArchivo.obtenerDatosParticipantes(args[0]);
+	    	clasificador.clasificar(participantes);
+	    	String dirRes = args[1];
+	    	if((dirRes.charAt(dirRes.length()-1)!='/')||(dirRes.charAt(dirRes.length()-1)!='\\'))
+	    		dirRes +="/";
+	    	JsonWriter.setDir(dirRes);
+	    	JsonWriter.dataToJSON(participantes);
+	    	JsonWriter.resultToJson(clasificador.getResultados());
+    	}catch(Exception e){e.printStackTrace();}; 
+}
     
     
     public void loadSubhabilityStructure(File dir)throws Exception {
@@ -132,6 +115,10 @@ public class Clasificador
     				//linea += subH.get(k).calcularValor((cont/(p.get(j).getParticipacionTotal()))*100) + ",";	
     			}
     			Pair<String,Double> result = redes[i].classifyOne(instance);
+    			if(!resultados.containsKey(p.get(j))) {
+    				resultados.put(p.get(j), new Hashtable<>());
+    			}
+    			resultados.get(p.get(j)).put(nomConflicto(i),result);
     			//linea = linea.substring(0, linea.length()-1);
     			//lineasDeDatos.get(i).add(linea);
     		}	

@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class LectorArchivo {
 	
 		
-	public ArrayList<Participante> obtenerDatosParticipantes(String filename ) throws FileNotFoundException{
+	public static ArrayList<Participante> obtenerDatosParticipantes(String filename ) throws FileNotFoundException{
 		ArrayList<Participante> participantes = new ArrayList<>();
 		Participante part = new Participante("", "jeje", "", "");
 		Scanner scan = new Scanner(new FileInputStream(filename));
