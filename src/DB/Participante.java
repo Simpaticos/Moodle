@@ -6,15 +6,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
+import javafx.beans.property.SimpleStringProperty;
+
 public class Participante {
+	private SimpleStringProperty  nombre = new SimpleStringProperty();
+	private SimpleStringProperty  id = new SimpleStringProperty();
 	private String curso;
-	private String nombre;
-	private String id;
+
+
 	private String idDiscusion;
 	private ArrayList<Subhabilidad> subhabilidades;
 	
 	public Participante(String curso, String n, String id, String idDiscusion) throws FileNotFoundException {
-		Scanner scan = new Scanner(new FileInputStream("SubabilityStructure.txt"));
+		Scanner scan = new Scanner(new FileInputStream("SubhabilityStructure.txt"));
 		subhabilidades = new ArrayList<>();
 		Subhabilidad sub;
 		while(scan.hasNextLine()) {
@@ -25,25 +29,25 @@ public class Participante {
 		}
 		scan.close();
 		this.curso = curso;
-		this.nombre = n;
-		this.id = id;
+		this.nombre.set(n);
+		this.id.set(id);
 		this.idDiscusion = idDiscusion;
 	}
 	
 	public String getNombre() {
-		return nombre;
+		return nombre.get();
 	}
 	
 	public void setNombre(String nombre) {
-		this.nombre = nombre;
+		this.nombre.set(nombre);
 	}
 	
 	public String getId() {
-		return id;
+		return id.get();
 	}
 	
 	public void setId(String id) {
-		this.id = id;
+		this.id.set(id);
 	}
 	
 	public String getIdDiscucion() {
@@ -60,14 +64,14 @@ public class Participante {
 	}
 
 	public boolean equals(Object participant) {
-		if (id.equals(((Participante)participant).getId()))
+		if (id.get().equals(((Participante)participant).getId()))
 			return true;
 		return false;
 	}
 
 	@Override
 	public String toString() {
-		return "Participante" +"\n"+  "[nombre=" + nombre + ", id=" + id + ", idDiscusion=" + "\n" + "idDiscusion" + "subhabilidades="
+		return "Participante" +"\n"+  "[nombre=" + nombre.get() + ", id=" + id.get() + ", idDiscusion=" + "\n" + "idDiscusion" + "subhabilidades="
 				+ subhabilidades + "]";
 	}
 

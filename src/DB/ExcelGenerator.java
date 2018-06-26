@@ -4,13 +4,17 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class ExcelGenerator {
-
-	public static void main(String[] args) {
-		System.out.println("Hello World");
-		
+	
+	private static ArrayList<Participante> participantes;
+	
+	public ArrayList<Participante> getParticipantes(){
+		return participantes;
+	}
+	
+	public void loadParticipantes() {
 		try {
 			LectorArchivo lector = new LectorArchivo();
-			ArrayList<Participante> participantes;
+			
 			participantes = lector.obtenerDatosParticipantes("prueba.txt");
 			System.out.println(participantes);
 			Participante p = participantes.get(1);
@@ -23,6 +27,11 @@ public class ExcelGenerator {
 			e.printStackTrace();
 			
 		}
+	}
+
+	public static void main(String[] args) {
+		System.out.println("Hello World");
+
 		
 		
 	}

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: #212F3C;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox alignment="CENTER" prefHeight="768.0" prefWidth="1024.0">
+         <children>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Busqueda por Alumno">
+               <font>
+                  <Font size="33.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="200.0" />
+               </VBox.margin>
+            </Text>
+            <HBox alignment="CENTER" prefHeight="37.0" prefWidth="201.0">
+               <children>
+                  <TextField fx:id="searchInput" prefHeight="34.0" prefWidth="557.0" promptText="Nombre y Apellido" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="50.0" left="200.0" right="200.0" top="50.0" />
+               </VBox.margin>
+            </HBox>
+            <TableView id="table-search" fx:id="tableSearch" prefHeight="331.0" prefWidth="964.0" stylesheets="@application.css">
+              <columns>
+                <TableColumn fx:id="nombreYApellido" maxWidth="477.0" minWidth="477.0" prefWidth="477.0" text="Nombre y Apellido" />
+                <TableColumn fx:id="nroId" maxWidth="486.0" minWidth="33.0" prefWidth="485.0" text="Numero Id" />
+              </columns>
+               <VBox.margin>
+                  <Insets left="30.0" right="30.0" />
+               </VBox.margin>
+            </TableView>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

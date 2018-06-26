@@ -1,3 +1,4 @@
 curso1	disc1	id1	Natalia	Tarea/Requerir cambio de enfoque
 curso1	disc1	id2	Maria	Motivar/Animar
 curso1	disc1	id2	Maria	Tarea/Coordinar procesos grupales
+curso1	disc1	id3	Juan	Tarea/Coordinar procesos grupales
