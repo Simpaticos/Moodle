@@ -15,6 +15,7 @@ public class Search extends Application {
 		loader.setController(controller);
 		Pane mainPane = (Pane) loader.load();
 		Scene scene = new Scene(mainPane);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		

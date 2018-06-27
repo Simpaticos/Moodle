@@ -5,6 +5,15 @@
 	-fx-background-color: #283747;
 }
 
+#search-input {
+	-fx-background-color: #283747;
+	-fx-text-fill: white; 
+}
+
+#search-input:focused {
+    
+}
+
 
 
 
