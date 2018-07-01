@@ -26,6 +26,7 @@ public class DetailController implements Initializable{
     @FXML	private ImageView btnBack;
     @FXML	private Stage pStage; 
     @FXML	private Stage sStage; 
+    @FXML	private ImageView btnClose;
     private ObservableList<String> list = FXCollections.observableArrayList();
     private Participante alumno; 
     
@@ -78,6 +79,16 @@ public class DetailController implements Initializable{
 		     @Override
 		     public void handle(MouseEvent event) {
 		         pStage.show();
+		         sStage.close();		         
+		         event.consume();
+		     }
+		});
+		
+		
+		btnClose.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+
+		     @Override
+		     public void handle(MouseEvent event) {
 		         sStage.close();		         
 		         event.consume();
 		     }

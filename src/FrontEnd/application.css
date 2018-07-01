@@ -5,18 +5,39 @@
 	-fx-background-color: #283747;
 }
 
+/*Header Table Search */
+#table-search .column-header-background{
+    -fx-background-color:  #1ABC9C;
+}
+
+#table-search .column-header-background .label{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+#table-search .column-header {
+    -fx-background-color:  #1ABC9C;
+}
+
+#table-search .table-cell{
+    -fx-text-fill: white;
+}
+
+#table-search:focused .table-row-cell:filled:focused:selected {
+    -fx-background-color: #283747;
+    -fx-text-fill: orange;
+    
+}
+
+#table-search .table-row-cell{
+    -fx-background-color: -fx-table-cell-border-color, #283747;
+
+}
+
 #search-input {
 	-fx-background-color: #283747;
 	-fx-text-fill: white; 
 }
-
-#search-input:focused {
-    
-}
-
-
-
-
 
 #clickme { /* .button es para aplicar a todos los botones el mismo estilo */ 
 	-fx-font-size: 20px;

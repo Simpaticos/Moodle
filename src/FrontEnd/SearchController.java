@@ -27,6 +27,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import weka.core.pmml.jaxbbindings.TableLocator;
 
 public class SearchController extends Application implements Initializable {
@@ -35,6 +36,7 @@ public class SearchController extends Application implements Initializable {
     @FXML private TableView<Participante> tableSearch = new TableView<>();
     @FXML private TableColumn<Participante, String> nombreYApellido;
     @FXML private TableColumn<Participante, String> nroId;
+    @FXML private ImageView btnClose;
 	private Stage pStage;
 	private ObservableList<Participante> data = FXCollections.observableArrayList();
 	private Stage sStage = new Stage(); 
@@ -108,6 +110,15 @@ public class SearchController extends Application implements Initializable {
 			return row; 
 		});
 		
+		btnClose.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+
+		     @Override
+		     public void handle(MouseEvent event) {
+		         pStage.close();		         
+		         event.consume();
+		     }
+		});
+		
 		
 		
 	}
@@ -126,6 +137,7 @@ public class SearchController extends Application implements Initializable {
 		Scene scene = new Scene(mainPane);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		secondStage.setScene(scene);
+		secondStage.initStyle(StageStyle.UNDECORATED);
 		secondStage.setWidth(pStage.getWidth());
 		secondStage.setHeight(pStage.getHeight());
 		secondStage.show();	
