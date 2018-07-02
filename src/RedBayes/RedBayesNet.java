@@ -11,8 +11,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.ObjectInputStream;
+import java.util.ArrayList;
 
-import javafx.util.Pair;
+import Clasificador.*;
+//import javafx.util.Pair;
 import weka.classifiers.bayes.BayesNet;
 
 public class RedBayesNet extends RedBayes {
@@ -42,6 +44,9 @@ public class RedBayesNet extends RedBayes {
 		for(int i=0;i<instances.numInstances();i++) {
 			((BayesNet)red).updateClassifier(instances.instance(i));}
 	}
+	public void trainWithOne(Instance instance)throws Exception {
+		((BayesNet)red).updateClassifier(instance);
+	}
 
 
 	public void classifyInstances(Instances instances, String resultDir) throws Exception {
@@ -66,16 +71,12 @@ public class RedBayesNet extends RedBayes {
 	}
 
 	@Override
-	public Pair<String,Double> classifyOne(Instance instance) throws Exception {
+	public ArrayList<Resultado> classifyOne(Instance instance) throws Exception {
 		double[] clsLabel = ((BayesNet)red).distributionForInstance(instance);
-		double aux=0;
-		int ind=0;
-		for(int i=0;i<clsLabel.length;i++)
-			if(clsLabel[i]>aux) {
-				aux = clsLabel[i];
-				ind = i;
-			}
-		Pair<String,Double> result = new Pair<String,Double>(structure.classAttribute().value(ind),new Double(aux));
+		ArrayList<Resultado> result = new ArrayList<Resultado>();
+		for(int i=0;i<clsLabel.length;i++) {
+			result.add(new Resultado(structure.classAttribute().value(i),new Double(clsLabel[i])));
+		}
 		return result;
 	}
 }
