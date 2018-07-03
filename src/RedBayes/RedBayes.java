@@ -4,15 +4,16 @@ package RedBayes;
 //import weka.core.Instance;
 import weka.classifiers.AbstractClassifier;
 import weka.core.Instance;
-import javafx.util.Pair;
+//import javafx.util.Pair;
 //import weka.classifiers.bayes.BayesNet;
 //import weka.classifiers.bayes.NaiveBayesUpdateable;
 import weka.core.Instances;
 //import weka.estimators.DiscreteEstimator;
 //import weka.estimators.Estimator;
 import weka.core.converters.ArffLoader;
-
+import Clasificador.*;
 import java.io.*;
+import java.util.ArrayList;
 
 public abstract class RedBayes {
 	protected AbstractClassifier red;
@@ -64,5 +65,5 @@ public abstract class RedBayes {
 	public Instances getStructure() {
 		return this.structure;
 	}
-	public abstract Pair<String,Double> classifyOne(Instance instance) throws Exception;
+	public abstract ArrayList<Resultado> classifyOne(Instance instance) throws Exception;
 }

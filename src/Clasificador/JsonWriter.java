@@ -18,7 +18,7 @@ import javafx.util.*;
 public class JsonWriter {
 	
 	private static String dir;
-	public static void resultToJson(Hashtable<Participante,Hashtable<String,Pair<String,Double>>> resultados) {
+	public static void resultToJson(Hashtable<Participante,Hashtable<String,ArrayList<Resultado>>> resultados) {
     	JSONArray arr = new JSONArray();
 		for(Participante p: resultados.keySet()) {
     		JSONObject json = oneResultToJSON(p, resultados.get(p));
@@ -27,15 +27,21 @@ public class JsonWriter {
         try {writeJson(dir+"Result.json",arr);} catch (IOException e) {e.printStackTrace();}
 	}
 	
-	private static JSONObject oneResultToJSON(Participante p,Hashtable<String,Pair<String,Double>> results) {
+	private static JSONObject oneResultToJSON(Participante p,Hashtable<String,ArrayList<Resultado>> results) {
 		JSONObject json=new JSONObject();
 		json.put("name", p.getNombre());
 		json.put("id", p.getId());
 		for(String c : results.keySet()) {
 			JSONObject conf = new JSONObject();
-			Pair<String, Double> r = results.get(c);
-			conf.put("sub-hability_to_train", r.getKey());
-			conf.put("value", r.getValue());
+			ArrayList<Resultado> r = results.get(c);
+			for(Resultado res : r) {
+				JSONObject val = new JSONObject();
+				val.put("probabilidad", res.getProbabilidad());
+				val.put("porcentaje", res.getPorcentaje());
+				val.put("porcentaje_ideal_min",res.getValorIdealMinimo());
+				val.put("porcentaje_ideal_max",res.getValorIdealMaximo());
+				conf.put(res.getHabilidadAEntrenar(), val);
+			}
 			json.put(c,conf);
 		}
 		return json;

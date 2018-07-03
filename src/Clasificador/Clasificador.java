@@ -3,21 +3,21 @@ import java.io.*;
 import java.util.*;
 
 import weka.core.DenseInstance;
-import weka.core.Instance;
+//import weka.core.Instance;
 import DB.*;
 import RedBayes.RedBayesNet;
-import javafx.util.Pair;
-import weka.core.Instances;
+//import javafx.util.Pair;
+//import weka.core.Instances;
 
 public class Clasificador
 {
 	private RedBayesNet[] redes = new RedBayesNet[6];
 	private ArrayList<SubhabilidadConMargenes> subHabilidades;
-	private Hashtable<Participante,Hashtable<String,Pair<String,Double>>> resultados;
-	public Hashtable<Participante, Hashtable<String, Pair<String, Double>>> getResultados() {
+	private Hashtable<Participante,Hashtable<String,ArrayList<Resultado>>> resultados;
+	public Hashtable<Participante, Hashtable<String, ArrayList<Resultado>>> getResultados() {
 		return resultados;
 	}
-	public void setResultados(Hashtable<Participante, Hashtable<String, Pair<String, Double>>> resultados) {
+	public void setResultados(Hashtable<Participante, Hashtable<String, ArrayList<Resultado>>> resultados) {
 		this.resultados = resultados;
 	}
 
@@ -104,23 +104,38 @@ public class Clasificador
     		for(int j=0;j<p.size();j++) {
     			DenseInstance instance = new DenseInstance(redes[i].getStructure().numAttributes());
     			ArrayList<SubhabilidadConMargenes> subH = subHabilidadesPorConflicto(nomConflicto(i));
-    			//String linea = "?,";
+    			Double[] valores = new Double[subH.size()];
     			for(int k=0;k<subH.size();k++) {
     				ArrayList<String> attr = subH.get(k).getAtributos();
     				double cont=0;
     				for(int l=0;l<attr.size();l++) {
     					cont += p.get(j).getAtributo(subH.get(k).getNombre().split("-")[1], attr.get(l));
     				}
-    				instance.setValue(k, cont);
-    				//linea += subH.get(k).calcularValor((cont/(p.get(j).getParticipacionTotal()))*100) + ",";	
+    				cont = (cont/(p.get(j).getParticipacionTotal()))*100;
+    				valores[k] = new Double(cont);
+    				instance.setValue(k, subH.get(k).calcularValor(cont));
     			}
-    			Pair<String,Double> result = redes[i].classifyOne(instance);
+    			ArrayList<Resultado> result = redes[i].classifyOne(instance);
+    			int indMaxProb=0;
+    			Double maxProb= new Double(0);
+    			for(int r=0;r<result.size();r++)
+    				if(result.get(r).getProbabilidad().compareTo(maxProb)>0) {
+    					maxProb=result.get(r).getProbabilidad();
+    					indMaxProb=r;
+    				};
+    			instance.setClassValue(indMaxProb);
+    			redes[i].trainWithOne(instance);
+    			for(int k=0;k<subH.size();k++) {
+    				int indice = getIndiceForHability(result.get(k).getHabilidadAEntrenar(), subH);
+    				result.get(k).setPorcentaje(valores[indice]);
+        			result.get(k).setValorIdealMinimo(subH.get(indice).getMin());
+        			result.get(k).setValorIdealMaximo(subH.get(indice).getMax());
+    			}
+    			
     			if(!resultados.containsKey(p.get(j))) {
     				resultados.put(p.get(j), new Hashtable<>());
     			}
     			resultados.get(p.get(j)).put(nomConflicto(i),result);
-    			//linea = linea.substring(0, linea.length()-1);
-    			//lineasDeDatos.get(i).add(linea);
     		}	
     	}
     }
@@ -143,6 +158,13 @@ public class Clasificador
     	}
     	return result;
     }
-    
+    public int getIndiceForHability(String s, ArrayList<SubhabilidadConMargenes> lista) {
+    	int result=0;
+    	for(int i=0;i<lista.size();i++) {
+    		if(lista.get(i).getNombre().split("-")[1].equals(s));
+    		result=i;
+    	}
+    	return result;
+    }
     	
 }
