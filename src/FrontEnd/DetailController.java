@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.ResourceBundle;
 
 import DB.Participante;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -40,7 +41,6 @@ public class DetailController implements Initializable{
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-    	
     	nombreAlumno.setText(alumno.getNombre());
     	
         String[] skills = new String[6];
@@ -79,7 +79,7 @@ public class DetailController implements Initializable{
 		     @Override
 		     public void handle(MouseEvent event) {
 		         pStage.show();
-		         sStage.close();		         
+		         sStage.hide();		         
 		         event.consume();
 		     }
 		});

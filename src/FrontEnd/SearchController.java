@@ -7,6 +7,7 @@ import java.util.function.Predicate;
 import DB.ExcelGenerator;
 import DB.Participante;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -41,6 +42,7 @@ public class SearchController extends Application implements Initializable {
 	private ObservableList<Participante> data = FXCollections.observableArrayList();
 	private Stage sStage = new Stage(); 
 	private Participante p = null; 
+	private boolean styled = false; 
 	
 	//Base de Datos
 	private ExcelGenerator db;
@@ -130,6 +132,7 @@ public class SearchController extends Application implements Initializable {
 	@Override
 	public void start(Stage secondStage) throws Exception {
 		if (p != null) {
+		System.out.println("Paso por el out de second");
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("Detail.fxml"));
 		DetailController c = new DetailController(p, pStage, secondStage);
 		loader.setController(c);
@@ -137,7 +140,10 @@ public class SearchController extends Application implements Initializable {
 		Scene scene = new Scene(mainPane);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		secondStage.setScene(scene);
-		secondStage.initStyle(StageStyle.UNDECORATED);
+		if (!styled) {
+			secondStage.initStyle(StageStyle.UNDECORATED);
+			styled = true; 
+		}
 		secondStage.setWidth(pStage.getWidth());
 		secondStage.setHeight(pStage.getHeight());
 		secondStage.show();	
