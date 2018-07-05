@@ -28,6 +28,7 @@ public class JsonWriter {
 	}
 	
 	private static JSONObject oneResultToJSON(Participante p,Hashtable<String,ArrayList<Resultado>> results) {
+		//Guardo resultado en el participante
 		JSONObject json=new JSONObject();
 		json.put("name", p.getNombre());
 		json.put("id", p.getId());

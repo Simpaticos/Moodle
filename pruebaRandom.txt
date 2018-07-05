@@ -1,0 +1,200 @@
+Curso1	disc1	6	enzo	Mediacion/Mediacion docente
+Curso1	disc1	5	nacho	Motivar/Animar
+Curso1	disc1	1	herminio	Informar/Elaborar
+Curso1	disc1	4	seba	Reconocimiento/Apreciacion
+Curso1	disc1	2	lucas	Argumentacion/Conciliar
+Curso1	disc1	4	seba	Reconocimiento/Rechazo
+Curso1	disc1	0	juan	Argumentacion/Ofrecer Alternativa
+Curso1	disc1	0	juan	Motivar/Animar
+Curso1	disc1	1	herminio	Informar/Afirmar
+Curso1	disc1	3	santi	Mantenimiento/Disculparse
+Curso1	disc1	5	nacho	Argumentacion/Dudar
+Curso1	disc1	1	herminio	Informar/Parafrasear
+Curso1	disc1	0	juan	Informar/Sugerir
+Curso1	disc1	1	herminio	Reconocimiento/Apreciacion
+Curso1	disc1	6	enzo	Mantenimiento/Sugerir accion
+Curso1	disc1	3	santi	Reconocimiento/Apreciacion
+Curso1	disc1	7	nati	Informar/Guiar
+Curso1	disc1	1	herminio	Requerir/Ilustracion
+Curso1	disc1	0	juan	Informar/Elaborar
+Curso1	disc1	7	nati	Reconocimiento/Apreciacion
+Curso1	disc1	6	enzo	Mediacion/Mediacion docente
+Curso1	disc1	5	nacho	Requerir/Informacion
+Curso1	disc1	0	juan	Mantenimiento/Requerir atencion
+Curso1	disc1	4	seba	Motivar/Animar
+Curso1	disc1	7	nati	Mantenimiento/Disculparse
+Curso1	disc1	4	seba	Reconocimiento/Aceptacion-Confirmacion
+Curso1	disc1	3	santi	Informar/Guiar
+Curso1	disc1	1	herminio	Motivar/Reforzar
+Curso1	disc1	5	nacho	Mediacion/Mediacion docente
+Curso1	disc1	3	santi	Reconocimiento/Aceptacion-Confirmacion
+Curso1	disc1	6	enzo	Motivar/Reforzar
+Curso1	disc1	3	santi	Reconocimiento/Rechazo
+Curso1	disc1	0	juan	Motivar/Reforzar
+Curso1	disc1	7	nati	Argumentacion/Dudar
+Curso1	disc1	1	herminio	Motivar/Reforzar
+Curso1	disc1	4	seba	Argumentacion/Discrepar
+Curso1	disc1	1	herminio	Requerir/Informacion
+Curso1	disc1	0	juan	Argumentacion/Conciliar
+Curso1	disc1	5	nacho	Mediacion/Mediacion docente
+Curso1	disc1	5	nacho	Argumentacion/Discrepar
+Curso1	disc1	2	lucas	Mediacion/Mediacion docente
+Curso1	disc1	3	santi	Requerir/Clarificacion
+Curso1	disc1	4	seba	Argumentacion/Conciliar
+Curso1	disc1	5	nacho	Requerir/Ilustracion
+Curso1	disc1	6	enzo	Requerir/Opinion
+Curso1	disc1	2	lucas	Mantenimiento/Requerir confirmacion
+Curso1	disc1	1	herminio	Argumentacion/Dudar
+Curso1	disc1	3	santi	Mantenimiento/Disculparse
+Curso1	disc1	1	herminio	Requerir/Clarificacion
+Curso1	disc1	3	santi	Mediacion/Mediacion docente
+Curso1	disc1	1	herminio	Informar/Afirmar
+Curso1	disc1	3	santi	Mantenimiento/Atender
+Curso1	disc1	3	santi	Mediacion/Mediacion docente
+Curso1	disc1	7	nati	Informar/Explicar-Clarificar
+Curso1	disc1	5	nacho	Informar/Afirmar
+Curso1	disc1	7	nati	Mediacion/Mediacion docente
+Curso1	disc1	5	nacho	Informar/Justificar
+Curso1	disc1	1	herminio	Motivar/Reforzar
+Curso1	disc1	1	herminio	Mantenimiento/Atender
+Curso1	disc1	0	juan	Mediacion/Mediacion docente
+Curso1	disc1	7	nati	Argumentacion/Inferir
+Curso1	disc1	7	nati	Mantenimiento/Atender
+Curso1	disc1	7	nati	Requerir/Elaboracion
+Curso1	disc1	3	santi	Mantenimiento/Disculparse
+Curso1	disc1	5	nacho	Requerir/Elaboracion
+Curso1	disc1	0	juan	Motivar/Animar
+Curso1	disc1	6	enzo	Argumentacion/Proponer excepciones
+Curso1	disc1	4	seba	Reconocimiento/Aceptacion-Confirmacion
+Curso1	disc1	7	nati	Mediacion/Mediacion docente
+Curso1	disc1	2	lucas	Motivar/Reforzar
+Curso1	disc1	2	lucas	Mediacion/Mediacion docente
+Curso1	disc1	5	nacho	Mantenimiento/Requerir atencion
+Curso1	disc1	4	seba	Mediacion/Mediacion docente
+Curso1	disc1	6	enzo	Argumentacion/Concertar
+Curso1	disc1	7	nati	Reconocimiento/Rechazo
+Curso1	disc1	3	santi	Motivar/Reforzar
+Curso1	disc1	3	santi	Requerir/Justificacion
+Curso1	disc1	6	enzo	Mantenimiento/Disculparse
+Curso1	disc1	4	seba	Reconocimiento/Aceptacion-Confirmacion
+Curso1	disc1	0	juan	Mediacion/Mediacion docente
+Curso1	disc1	4	seba	Requerir/Clarificacion
+Curso1	disc1	4	seba	Motivar/Animar
+Curso1	disc1	4	seba	Informar/Explicar-Clarificar
+Curso1	disc1	1	herminio	Argumentacion/Ofrecer Alternativa
+Curso1	disc1	5	nacho	Requerir/Ilustracion
+Curso1	disc1	3	santi	Requerir/Elaboracion
+Curso1	disc1	5	nacho	Requerir/Opinion
+Curso1	disc1	3	santi	Motivar/Animar
+Curso1	disc1	0	juan	Motivar/Animar
+Curso1	disc1	4	seba	Mantenimiento/Requerir confirmacion
+Curso1	disc1	2	lucas	Motivar/Reforzar
+Curso1	disc1	6	enzo	Motivar/Animar
+Curso1	disc1	1	herminio	Motivar/Animar
+Curso1	disc1	2	lucas	Argumentacion/Proponer excepciones
+Curso1	disc1	5	nacho	Informar/Afirmar
+Curso1	disc1	0	juan	Reconocimiento/Rechazo
+Curso1	disc1	7	nati	Mantenimiento/Requerir confirmacion
+Curso1	disc1	2	lucas	Mantenimiento/Atender
+Curso1	disc1	3	santi	Motivar/Animar
+Curso1	disc1	3	santi	Argumentacion/Suponer
+Curso1	disc1	4	seba	Mediacion/Mediacion docente
+Curso1	disc1	2	lucas	Requerir/Opinion
+Curso1	disc1	2	lucas	Requerir/Justificacion
+Curso1	disc1	6	enzo	Mediacion/Mediacion docente
+Curso1	disc1	0	juan	Argumentacion/Proponer excepciones
+Curso1	disc1	0	juan	Informar/Parafrasear
+Curso1	disc1	1	herminio	Requerir/Clarificacion
+Curso1	disc1	5	nacho	Mantenimiento/Atender
+Curso1	disc1	0	juan	Mantenimiento/Sugerir accion
+Curso1	disc1	5	nacho	Mediacion/Mediacion docente
+Curso1	disc1	6	enzo	Argumentacion/Conciliar
+Curso1	disc1	0	juan	Mantenimiento/Sugerir accion
+Curso1	disc1	7	nati	Informar/Parafrasear
+Curso1	disc1	6	enzo	Requerir/Ilustracion
+Curso1	disc1	6	enzo	Argumentacion/Proponer excepciones
+Curso1	disc1	0	juan	Mediacion/Mediacion docente
+Curso1	disc1	1	herminio	Argumentacion/Dudar
+Curso1	disc1	0	juan	Mediacion/Mediacion docente
+Curso1	disc1	0	juan	Requerir/Opinion
+Curso1	disc1	4	seba	Informar/Parafrasear
+Curso1	disc1	4	seba	Argumentacion/Proponer excepciones
+Curso1	disc1	0	juan	Motivar/Animar
+Curso1	disc1	1	herminio	Requerir/Clarificacion
+Curso1	disc1	7	nati	Mediacion/Mediacion docente
+Curso1	disc1	0	juan	Motivar/Reforzar
+Curso1	disc1	7	nati	Motivar/Animar
+Curso1	disc1	0	juan	Motivar/Animar
+Curso1	disc1	5	nacho	Requerir/Justificacion
+Curso1	disc1	1	herminio	Mantenimiento/Disculparse
+Curso1	disc1	4	seba	Reconocimiento/Rechazo
+Curso1	disc1	0	juan	Argumentacion/Conciliar
+Curso1	disc1	7	nati	Mediacion/Mediacion docente
+Curso1	disc1	3	santi	Argumentacion/Suponer
+Curso1	disc1	1	herminio	Informar/Afirmar
+Curso1	disc1	3	santi	Mediacion/Mediacion docente
+Curso1	disc1	3	santi	Requerir/Justificacion
+Curso1	disc1	5	nacho	Argumentacion/Conciliar
+Curso1	disc1	6	enzo	Argumentacion/Conciliar
+Curso1	disc1	1	herminio	Requerir/Justificacion
+Curso1	disc1	6	enzo	Informar/Justificar
+Curso1	disc1	5	nacho	Motivar/Animar
+Curso1	disc1	4	seba	Requerir/Informacion
+Curso1	disc1	3	santi	Reconocimiento/Apreciacion
+Curso1	disc1	4	seba	Motivar/Animar
+Curso1	disc1	7	nati	Mantenimiento/Requerir atencion
+Curso1	disc1	7	nati	Mediacion/Mediacion docente
+Curso1	disc1	7	nati	Requerir/Clarificacion
+Curso1	disc1	3	santi	Argumentacion/Conciliar
+Curso1	disc1	1	herminio	Mantenimiento/Requerir confirmacion
+Curso1	disc1	5	nacho	Mantenimiento/Requerir confirmacion
+Curso1	disc1	7	nati	Argumentacion/Dudar
+Curso1	disc1	3	santi	Requerir/Opinion
+Curso1	disc1	1	herminio	Motivar/Reforzar
+Curso1	disc1	7	nati	Argumentacion/Concertar
+Curso1	disc1	5	nacho	Motivar/Reforzar
+Curso1	disc1	0	juan	Informar/Justificar
+Curso1	disc1	7	nati	Requerir/Clarificacion
+Curso1	disc1	4	seba	Reconocimiento/Aceptacion-Confirmacion
+Curso1	disc1	6	enzo	Requerir/Elaboracion
+Curso1	disc1	2	lucas	Motivar/Reforzar
+Curso1	disc1	7	nati	Argumentacion/Suponer
+Curso1	disc1	4	seba	Reconocimiento/Rechazo
+Curso1	disc1	5	nacho	Requerir/Clarificacion
+Curso1	disc1	1	herminio	Mantenimiento/Sugerir accion
+Curso1	disc1	7	nati	Informar/Guiar
+Curso1	disc1	5	nacho	Mediacion/Mediacion docente
+Curso1	disc1	4	seba	Argumentacion/Concertar
+Curso1	disc1	5	nacho	Argumentacion/Concertar
+Curso1	disc1	1	herminio	Argumentacion/Discrepar
+Curso1	disc1	2	lucas	Argumentacion/Conciliar
+Curso1	disc1	6	enzo	Mantenimiento/Requerir atencion
+Curso1	disc1	5	nacho	Requerir/Opinion
+Curso1	disc1	6	enzo	Mediacion/Mediacion docente
+Curso1	disc1	5	nacho	Informar/Afirmar
+Curso1	disc1	6	enzo	Mantenimiento/Sugerir accion
+Curso1	disc1	6	enzo	Requerir/Elaboracion
+Curso1	disc1	7	nati	Reconocimiento/Rechazo
+Curso1	disc1	1	herminio	Requerir/Ilustracion
+Curso1	disc1	2	lucas	Reconocimiento/Rechazo
+Curso1	disc1	4	seba	Mantenimiento/Disculparse
+Curso1	disc1	0	juan	Argumentacion/Ofrecer Alternativa
+Curso1	disc1	0	juan	Mediacion/Mediacion docente
+Curso1	disc1	4	seba	Argumentacion/Conciliar
+Curso1	disc1	6	enzo	Mediacion/Mediacion docente
+Curso1	disc1	4	seba	Requerir/Informacion
+Curso1	disc1	4	seba	Mantenimiento/Disculparse
+Curso1	disc1	0	juan	Informar/Guiar
+Curso1	disc1	5	nacho	Requerir/Clarificacion
+Curso1	disc1	4	seba	Mediacion/Mediacion docente
+Curso1	disc1	5	nacho	Requerir/Informacion
+Curso1	disc1	1	herminio	Mediacion/Mediacion docente
+Curso1	disc1	4	seba	Argumentacion/Ofrecer Alternativa
+Curso1	disc1	3	santi	Motivar/Animar
+Curso1	disc1	2	lucas	Argumentacion/Suponer
+Curso1	disc1	7	nati	Mantenimiento/Requerir confirmacion
+Curso1	disc1	2	lucas	Informar/Explicar-Clarificar
+Curso1	disc1	2	lucas	Mantenimiento/Requerir atencion
+Curso1	disc1	4	seba	Requerir/Opinion
+Curso1	disc1	4	seba	Requerir/Clarificacion
+Curso1	disc1	0	juan	Informar/Guiar

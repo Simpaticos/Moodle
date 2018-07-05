@@ -4,19 +4,18 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Hashtable;
 import java.util.Scanner;
 
+import Clasificador.Resultado;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Participante {
 	private SimpleStringProperty  nombre = new SimpleStringProperty();
 	private SimpleStringProperty  id = new SimpleStringProperty();
 	private String curso;
-
-
 	private String idDiscusion;
 	private ArrayList<Subhabilidad> subhabilidades;
-	
 	public Participante(String curso, String n, String id, String idDiscusion) throws FileNotFoundException {
 		Scanner scan = new Scanner(new FileInputStream("SubhabilityStructure.txt"));
 		subhabilidades = new ArrayList<>();
@@ -33,6 +32,8 @@ public class Participante {
 		this.id.set(id);
 		this.idDiscusion = idDiscusion;
 	}
+	
+	
 	
 	public String getNombre() {
 		return nombre.get();

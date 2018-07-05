@@ -39,6 +39,12 @@ public class Subhabilidad {
 		this.suma = suma;
 	}
 
+	public String getRandomAtrib()
+	{
+		int rand = (int)(Math.random() * ((atributos.size())));
+		return atributos.get(rand);
+	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this.nombre.equals(((Subhabilidad)obj).getNombre()))
