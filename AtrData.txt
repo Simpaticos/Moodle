@@ -7,18 +7,18 @@ evaluacion-Informar:Sugerir,Justificar,Afirmar:4.2,8
 evaluacion-Motivar:Reforzar:4.2,8
 evaluacion-Tarea:Coordinar procesos grupales:4.2,8
 evaluacion-Requerir:Justificacion,Opinion:0.5,4.5
-evaluacion-Mantenimiento:Requerir Confirmacion:0.5,4.5
+evaluacion-Mantenimiento:Requerir confirmacion:0.5,4.5
 control-Argumentacion:Ofrecer alternativa:1,2.2
 control-Informar:Guiar,Elaborar:1,2.2
 control-Mantenimiento:Sugerir accion:1,2.2
 control-Tarea:Requerir cambio de enfoque:1,2.2
 control-Requerir:Elaboracion:0,5
-decision-Reconocimiento1:Aceptacion:6,20
+decision-Reconocimiento1:Aceptacion-Confirmacion:6,20
 decision-Reconocimiento2:Rechazo:3,13
 tension-Reconocimiento:Apreciacion:3,14
 tension-Argumentacion:Dudar:0.5,5
 tension-Mantenimiento:Requerir atencion:0.5,5
 reintegracion-Motivar:Animar:0,1.67
-reintegracion-Mantenimiento:Disculparsee,Atender:0,1.67
+reintegracion-Mantenimiento:Disculparse,Atender:0,1.67
 reintegracion-Tarea:Finalizar participacion:0,1.67
 reintegracion-Argumentacion:Discrepar:0,7

@@ -35,6 +35,8 @@ public class RedBayesNet extends RedBayes {
 		ObjectInputStream oi = new ObjectInputStream(fi);
 		this.red = (BayesNet)oi.readObject();
 		this.structure = new Instances(((BayesNet)red).m_Instances,0);
+		//System.out.println(((BayesNet)red).m_Instances.toString());
+		((BayesNet)red).m_Instances.setClassIndex(0);
 		oi.close();
 		fi.close();
 	}

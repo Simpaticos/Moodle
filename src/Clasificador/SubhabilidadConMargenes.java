@@ -24,13 +24,13 @@ public class SubhabilidadConMargenes extends Subhabilidad {
 
 	public String calcularValor(double valor) {
 		if(valor<min)
-			return "bajo";
+			return "Bajo";
 		else
 			if((valor>=min)&&(valor<max))
-				return "medio";
+				return "Medio";
 			else
 				if(valor>=max)
-					return "alto";
+					return "Alto";
 		return null;
 	}
 }

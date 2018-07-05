@@ -102,6 +102,8 @@ public class Subhabilidad {
 	}
 	
 	public int getAtrbuto(String atributo) {
+		System.out.println(atributos.lastIndexOf(atributo));
+		System.out.println(atributo);
 		return contadorAtributos[atributos.lastIndexOf(atributo)];
 	}
 	

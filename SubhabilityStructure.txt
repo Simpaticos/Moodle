@@ -1,5 +1,5 @@
 Mediacion, Mediacion docente
-Argumentacion, Conciliar, Concertar, Discrepar, Ofrecer Alternativa, Inferir, Suponer, Proponer excepciones, Dudar
+Argumentacion, Conciliar, Concertar, Discrepar, Ofrecer alternativa, Inferir, Suponer, Proponer excepciones, Dudar
 Motivar, Animar, Reforzar
 Informar, Parafrasear, Guiar, Sugerir, Elaborar, Explicar-Clarificar, Justificar, Afirmar
 Requerir, Informacion, Elaboracion, Clarificacion, Justificacion, Opinion, Ilustracion
