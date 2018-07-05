@@ -139,7 +139,7 @@ public class Clasificador
     		}	
     	}
     }
-    public String nomConflicto(int i) {
+    public static String nomConflicto(int i) {
     	switch(i) {
 	    	case 0:return "comunicacion";
 	    	case 1:return "evaluacion";
