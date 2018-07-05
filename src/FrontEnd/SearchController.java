@@ -1,5 +1,6 @@
 package FrontEnd;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
@@ -27,6 +28,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import weka.core.pmml.jaxbbindings.TableLocator;
@@ -38,6 +40,7 @@ public class SearchController extends Application implements Initializable {
     @FXML private TableColumn<Participante, String> nombreYApellido;
     @FXML private TableColumn<Participante, String> nroId;
     @FXML private ImageView btnClose;
+    @FXML private ImageView btnAddData;
 	private Stage pStage;
 	private ObservableList<Participante> data = FXCollections.observableArrayList();
 	private Stage sStage = new Stage(); 
@@ -60,16 +63,8 @@ public class SearchController extends Application implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-		//LOAD TABLA INICIAL
+		// TABLA INICIAL
 		FilteredList<Participante> filteredData = new FilteredList<>(data, e -> true);
-		db = new ExcelGenerator();
-		db.loadParticipantes();
-		nombreYApellido.setCellValueFactory(new PropertyValueFactory<Participante,String>("nombre"));
-		nroId.setCellValueFactory(new PropertyValueFactory<Participante,String>("id"));		
-		for (Participante p: db.getParticipantes())
-			data.add(p);
-		tableSearch.setItems(data);
-		
 		
 		//BUSQUEDA MEDIANTE TEXTFIELD NOMBRE O ID
 		searchInput.setOnKeyReleased(e -> {
@@ -118,6 +113,30 @@ public class SearchController extends Application implements Initializable {
 		     public void handle(MouseEvent event) {
 		         pStage.close();		         
 		         event.consume();
+		     }
+		});
+		
+		//BOTON CARGAR CONSULTA BASE DE DATOS
+		btnAddData.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+
+		     @Override
+		     public void handle(MouseEvent event) {
+		        FileChooser fileChooser = new FileChooser();
+		        fileChooser.setTitle("Seleccionar Archivo Base de Datos");
+		        File file = fileChooser.showOpenDialog(pStage);
+		         
+		 		if (file != null) {
+					db = new ExcelGenerator();
+					db.loadParticipantes(file.getAbsolutePath());
+					nombreYApellido.setCellValueFactory(new PropertyValueFactory<Participante,String>("nombre"));
+					nroId.setCellValueFactory(new PropertyValueFactory<Participante,String>("id"));		
+					for (Participante p: db.getParticipantes())
+						data.add(p);
+					tableSearch.setItems(data);
+		 		}
+
+		         
+		    	 event.consume();
 		     }
 		});
 		
