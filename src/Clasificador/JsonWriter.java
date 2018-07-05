@@ -32,7 +32,8 @@ public class JsonWriter {
 		JSONObject json=new JSONObject();
 		json.put("name", p.getNombre());
 		json.put("id", p.getId());
-		for(String c : results.keySet()) {
+		for(int i=0;i<6;i++) {
+			String c = Clasificador.nomConflicto(i);
 			JSONObject conf = new JSONObject();
 			ArrayList<Resultado> r = results.get(c);
 			for(Resultado res : r) {
