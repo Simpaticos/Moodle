@@ -17,7 +17,7 @@ public class LectorArchivo {
 		Scanner scan = new Scanner(new FileInputStream(filename));
 		while (scan.hasNextLine()) {
 			String line = scan.nextLine();
-			System.out.println("linea: "+ line);
+			//System.out.println("linea: "+ line);
 			String[] values = line.split("\t");
 			part.setId(values[2]);
 			String[] par = values[4].split("/");

@@ -1,24 +1,24 @@
-comunicacion-informar:parafrasear,explicar:7,15
-comunicacion-tarea:resumir_informacion:7,15
-comunicacion-requerir:informacion,clarificacion,ilustracion:2,11
-evaluacion-argumentacion:suponer,conciliar,concertar,inferir,proponer_excepciones:4.2,8
-evaluacion-mediar:mediacion_docente:4.2,8
-evaluacion-informar:sugerir,justificar,afirmar:4.2,8
-evaluacion-motivar:reforzar:4.2,8
-evaluacion-tarea:coordinar_procesos_grupales:4.2,8
-evaluacion-requerir:justificacion,opinion:0.5,4.5
-evaluacion-mantenimiento:requerir_confirmacion:0.5,4.5
-control-argumentacion:ofrecer_alternativa:1,2.2
-control-informar:guiar,elaborar:1,2.2
-control-mantenimiento:sugerir_accion:1,2.2
-control-tarea:requerir_cambio_de_enfoque:1,2.2
-control-requerir:elaboracion:0,5
-decision-reconocimiento1:aceptacion:6,20
-decision-reconocimiento2:rechazo:3,13
-tension-reconocimiento:apreciacion:3,14
-tension-argumentacion:dudar:0.5,5
-tension-mantenimiento:requerir_atencion:0.5,5
-reintegracion-motivar:animar:0,1.67
-reintegracion-mantenimiento:disculparsee,atender:0,1.67
-reintegracion-tarea:finalizar_participacion:0,1.67
-reintegracion-argumentacion:discrepar:0,7
+comunicacion-Informar:Parafrasear,Explicar-Clarificar:7,15
+comunicacion-Tarea:Resumir informacion:7,15
+comunicacion-Requerir:Informacion,Clarificacion,Ilustracion:2,11
+evaluacion-Argumentacion:Suponer,Conciliar,Concertar,Inferir,Proponer excepciones:4.2,8
+evaluacion-Mediar:Mediacion docente:4.2,8
+evaluacion-Informar:Sugerir,Justificar,Afirmar:4.2,8
+evaluacion-Motivar:Reforzar:4.2,8
+evaluacion-Tarea:Coordinar procesos grupales:4.2,8
+evaluacion-Requerir:Justificacion,Opinion:0.5,4.5
+evaluacion-Mantenimiento:Requerir Confirmacion:0.5,4.5
+control-Argumentacion:Ofrecer alternativa:1,2.2
+control-Informar:Guiar,Elaborar:1,2.2
+control-Mantenimiento:Sugerir accion:1,2.2
+control-Tarea:Requerir cambio de enfoque:1,2.2
+control-Requerir:Elaboracion:0,5
+decision-Reconocimiento1:Aceptacion:6,20
+decision-Reconocimiento2:Rechazo:3,13
+tension-Reconocimiento:Apreciacion:3,14
+tension-Argumentacion:Dudar:0.5,5
+tension-Mantenimiento:Requerir atencion:0.5,5
+reintegracion-Motivar:Animar:0,1.67
+reintegracion-Mantenimiento:Disculparsee,Atender:0,1.67
+reintegracion-Tarea:Finalizar participacion:0,1.67
+reintegracion-Argumentacion:Discrepar:0,7

@@ -109,7 +109,10 @@ public class Clasificador
     				ArrayList<String> attr = subH.get(k).getAtributos();
     				double cont=0;
     				for(int l=0;l<attr.size();l++) {
-    					cont += p.get(j).getAtributo(subH.get(k).getNombre().split("-")[1], attr.get(l));
+    					String subhabilidad = subH.get(k).getNombre().split("-")[1];
+    					if((subhabilidad.equals("Reconocimiento1"))||(subhabilidad.equals("Reconocimiento2")))
+    						subhabilidad = "Reconocimiento";
+    					cont += p.get(j).getAtributo(subhabilidad, attr.get(l));
     				}
     				cont = (cont/(p.get(j).getParticipacionTotal()))*100;
     				valores[k] = new Double(cont);
