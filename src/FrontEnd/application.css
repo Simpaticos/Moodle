@@ -6,9 +6,7 @@
 }
 
 /*Header Table Search */
-#table-search .column-header-background{
-    -fx-background-color:  #1ABC9C;
-}
+
 
 #table-search .column-header-background .label{
     -fx-background-color: transparent;
@@ -17,6 +15,8 @@
 
 #table-search .column-header {
     -fx-background-color:  #1ABC9C;
+    -fx-table-cell-border-color: orange;
+    -fx-border-color: transparent;
 }
 
 #table-search .table-cell{
@@ -24,13 +24,17 @@
 }
 
 #table-search:focused .table-row-cell:filled:focused:selected {
-    -fx-background-color: #283747;
-    -fx-text-fill: orange;
+    -fx-background-color: orange;
+    -fx-table-cell-border-color: orange;
     
 }
 
-#table-search .table-row-cell{
+#table-search .table-row-cell:filled{
     -fx-background-color: -fx-table-cell-border-color, #283747;
+}
+
+#table-search .table-row-cell{
+    -fx-background-color: #283747;
 
 }
 

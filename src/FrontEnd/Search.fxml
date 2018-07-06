@@ -16,7 +16,7 @@
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="768.0" prefWidth="1024.0">
          <children>
-            <AnchorPane id="detail-header" prefHeight="70.0" prefWidth="1024.0" style="-fx-background-color: #1ABC9C;" stylesheets="@application.css">
+            <AnchorPane id="detail-header" fx:id="topWindow" prefHeight="70.0" prefWidth="1024.0" style="-fx-background-color: #1ABC9C;" stylesheets="@application.css">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -38,6 +38,16 @@
                   <ImageView fx:id="btnAddData" fitHeight="32.0" fitWidth="32.0" layoutX="30.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@images/addData.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="btnJson" fitHeight="32.0" fitWidth="32.0" layoutX="87.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/jsonEmpty.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="btnRun" fitHeight="32.0" fitWidth="32.0" layoutX="144.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/runEmpty.png" />
                      </image>
                   </ImageView>
                </children>

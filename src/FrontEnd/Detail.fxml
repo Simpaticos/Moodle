@@ -11,7 +11,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: #212F3C;" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane id="detail-header" prefHeight="70.0" prefWidth="1024.0" style="-fx-background-color: #1ABC9C;" stylesheets="@application.css" AnchorPane.topAnchor="0.0">
+      <AnchorPane id="detail-header" fx:id="topWindow" prefHeight="70.0" prefWidth="1024.0" style="-fx-background-color: #1ABC9C;" stylesheets="@application.css" AnchorPane.topAnchor="0.0">
          <children>
             <Text fx:id="nombreAlumno" fill="WHITE" layoutX="480.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alumno">
                <font>

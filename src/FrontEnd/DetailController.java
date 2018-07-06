@@ -16,6 +16,7 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -28,8 +29,11 @@ public class DetailController implements Initializable{
     @FXML	private Stage pStage; 
     @FXML	private Stage sStage; 
     @FXML	private ImageView btnClose;
+    @FXML   private AnchorPane topWindow;
     private ObservableList<String> list = FXCollections.observableArrayList();
     private Participante alumno; 
+	private double xOffset = 0; 
+	private double yOffset = 0;
     
     
     public  DetailController(Participante p, Stage pStage, Stage sStage) {
@@ -42,6 +46,25 @@ public class DetailController implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
     	nombreAlumno.setText(alumno.getNombre());
+    	
+    	
+		// MOVIMIENTO DE VENTANA DESDE TOP WINDOWS
+		topWindow.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                xOffset = event.getSceneX();
+                yOffset = event.getSceneY();
+            }
+        });
+		
+		topWindow.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                sStage.setX(event.getScreenX() - xOffset);
+                sStage.setY(event.getScreenY() - yOffset);
+            }
+        });
+    	
     	
         String[] skills = new String[6];
         
@@ -78,7 +101,9 @@ public class DetailController implements Initializable{
 
 		     @Override
 		     public void handle(MouseEvent event) {
-		         pStage.show();
+		    	 pStage.setX(event.getScreenX() - xOffset);
+		    	 pStage.setY(event.getScreenY() - yOffset);
+		    	 pStage.show();
 		         sStage.hide();		         
 		         event.consume();
 		     }
