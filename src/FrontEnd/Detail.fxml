@@ -3,6 +3,7 @@
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -42,7 +43,7 @@
                   <Font size="24.0" />
                </font>
             </Text>
-            <BarChart fx:id="barChart" layoutX="26.0" layoutY="83.0" prefHeight="373.0" prefWidth="500.0" styleClass="barChart" stylesheets="@application.css">
+            <BarChart fx:id="barChart" layoutX="8.0" layoutY="63.0" prefHeight="442.0" prefWidth="680.0" styleClass="barChart" stylesheets="@application.css">
               <xAxis>
                 <CategoryAxis animated="false" side="BOTTOM" fx:id="xAxis">
                      <tickLabelFont>
@@ -84,36 +85,12 @@
                   <Font size="24.0" />
                </font>
             </Text>
-            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="48.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Curso 1">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Text>
-            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="48.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Curso 2">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Text>
-            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="48.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Curso 3 ">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Text>
-            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="48.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Curso 4">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Text>
-            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="48.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Curso 5">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Text>
             <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="18.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/courses.png" />
                </image>
             </ImageView>
+            <ListView fx:id="listCursos" layoutX="9.0" layoutY="75.0" prefHeight="554.0" prefWidth="252.0" />
          </children>
       </AnchorPane>
    </children>

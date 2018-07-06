@@ -79,6 +79,7 @@ public class SearchController extends Application implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
+		
 		// TABLA INICIAL
 		FilteredList<Participante> filteredData = new FilteredList<>(data, e -> true);
 		
@@ -136,7 +137,7 @@ public class SearchController extends Application implements Initializable {
 						} catch (Exception e1) {
 							e1.printStackTrace();
 						}
-						System.out.println(rowData.getNombre() + " " + rowData.getId());
+						System.out.println(rowData.getNombre() + "\\R " + rowData.getId());
 				}
 			});
 			return row; 
@@ -228,7 +229,7 @@ public class SearchController extends Application implements Initializable {
 		if (p != null) {
 		System.out.println("Paso por el out de second");
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("Detail.fxml"));
-		DetailController c = new DetailController(p, pStage, secondStage);
+		DetailController c = new DetailController(p, pStage, secondStage, rutaResultado);
 		loader.setController(c);
 		Pane mainPane = (Pane) loader.load();
 		Scene scene = new Scene(mainPane);

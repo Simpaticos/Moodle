@@ -15,5 +15,6 @@
 	<classpathentry kind="lib" path="lib/lib/mtj.jar"/>
 	<classpathentry kind="lib" path="lib/resources/bounce-src.jar"/>
 	<classpathentry kind="lib" path="lib/json-simple-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/santi/git/Moodle/lib/javax.json-1.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
