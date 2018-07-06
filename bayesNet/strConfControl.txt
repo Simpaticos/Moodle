@@ -1,0 +1,10 @@
+@relation ConfEvaluacion
+
+@attribute Entrenar {Argumentacion,Informar,Mantenimiento,Tarea,Requerir,Nada}
+@attribute Argumentacion {Bajo,Medio,Alto}
+@attribute Informar {Bajo,Medio,Alto}
+@attribute Mantenimiento {Bajo,Medio,Alto}
+@attribute Tarea {Bajo,Medio,Alto}
+@attribute Requerir {Bajo,Medio,Alto}
+
+@data

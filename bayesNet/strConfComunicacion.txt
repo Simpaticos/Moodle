@@ -1,0 +1,8 @@
+@relation ConfComunicacion
+
+@attribute Entrenar {Informar,Tarea,Requerir,Nada}
+@attribute Informar {Bajo,Medio,Alto}
+@attribute Tarea {Bajo,Medio,Alto}
+@attribute Requerir {Bajo,Medio,Alto}
+
+@data
