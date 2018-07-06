@@ -92,15 +92,22 @@ public class Participante {
 	public ArrayList<String> getAtributos (String subhabilidad) {
 		return subhabilidades.get(getPosSubhabilidad(subhabilidad)).getAtributos();
 	}
+	
 	public double getParticipacionTotal() {
 		double result = 0;
 		for(int i=0;i<subhabilidades.size();i++) 
 			result += subhabilidades.get(i).getSuma();
 		return result;
 	}
+	
 	public ArrayList<Subhabilidad> getSubHabilidades(){
 		return subhabilidades;
 	}
+	
+	public String getCurso() {
+		return curso;
+	}
+	
 }
 
 

@@ -90,7 +90,7 @@
                   <Image url="@images/courses.png" />
                </image>
             </ImageView>
-            <ListView fx:id="listCursos" layoutX="9.0" layoutY="75.0" prefHeight="554.0" prefWidth="252.0" />
+            <ListView id="list-cursos" fx:id="listCursos" layoutX="9.0" layoutY="75.0" prefHeight="554.0" prefWidth="252.0" stylesheets="@application.css" />
          </children>
       </AnchorPane>
    </children>

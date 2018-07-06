@@ -109,8 +109,8 @@ public class DetailController implements Initializable{
         
         
         //LISTA DE CURSOS 
-    //	ObservableList<String> cursos = FXCollections.observableArrayList(alumno.getCurso()); //Posteriormente con for addAll
-    //	listCursos.setItems(cursos);
+    	ObservableList<String> cursos = FXCollections.observableArrayList(alumno.getCurso()); //Posteriormente con for addAll
+    	listCursos.setItems(cursos);
     	
     	
     	
