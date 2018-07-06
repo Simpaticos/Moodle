@@ -63,7 +63,7 @@
                   <Insets bottom="50.0" left="200.0" right="200.0" top="15.0" />
                </VBox.margin>
             </HBox>
-            <TableView id="table-search" fx:id="tableSearch" prefHeight="444.0" prefWidth="964.0" stylesheets="@application.css">
+            <TableView id="table-search" fx:id="tableSearch" prefHeight="416.0" prefWidth="964.0" stylesheets="@application.css">
               <columns>
                 <TableColumn fx:id="nombreYApellido" maxWidth="477.0" minWidth="477.0" prefWidth="477.0" text="Nombre y Apellido" />
                 <TableColumn fx:id="nroId" maxWidth="486.0" minWidth="33.0" prefWidth="485.0" text="Numero Id" />
@@ -72,6 +72,18 @@
                   <Insets left="30.0" right="30.0" />
                </VBox.margin>
             </TableView>
+            <AnchorPane fx:id="errorBanner" prefHeight="38.0" prefWidth="1024.0">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+               <children>
+                  <Text fx:id="errorText" fill="WHITE" layoutX="198.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="628.5042114257812">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
          </children>
       </VBox>
    </children>

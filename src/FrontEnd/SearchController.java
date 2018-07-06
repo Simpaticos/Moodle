@@ -35,6 +35,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -52,6 +53,8 @@ public class SearchController extends Application implements Initializable {
     @FXML private ImageView btnJson;
     @FXML private ImageView btnRun;
     @FXML private AnchorPane topWindow;
+    @FXML private AnchorPane errorBanner;
+    @FXML private Text errorText;
     
 	private Stage pStage;
 	private ObservableList<Participante> data = FXCollections.observableArrayList();
@@ -73,6 +76,11 @@ public class SearchController extends Application implements Initializable {
 	
 	public SearchController (Stage primaryStage) {
 		pStage = primaryStage;
+	}
+	
+	public void esconderMensajeError() {
+		errorText.setText("");
+		errorBanner.setStyle("-fx-background-color: transparent");
 	}
 	
 
@@ -129,7 +137,7 @@ public class SearchController extends Application implements Initializable {
 			row.setOnMouseClicked(event -> {
 				if (event.getClickCount() == 2 && (! row.isEmpty())) {
 					Participante rowData = row.getItem();
-					if (resultadoListo)
+					if (resultadoListo) {
 						try {
 							p = rowData;
 							this.start(sStage);
@@ -138,6 +146,12 @@ public class SearchController extends Application implements Initializable {
 							e1.printStackTrace();
 						}
 						System.out.println(rowData.getNombre() + "\\R " + rowData.getId());
+					}
+					else {
+			    		errorText.setText("Inicie el analisis de colaboracion.");
+			    		errorBanner.setStyle("-fx-background-color: #e53935");	
+					}
+
 				}
 			});
 			return row; 
@@ -157,6 +171,7 @@ public class SearchController extends Application implements Initializable {
 
 		     @Override
 		     public void handle(MouseEvent event) {
+		    	esconderMensajeError();
 		        FileChooser fileChooser = new FileChooser();
 		        fileChooser.setTitle("Seleccionar Archivo Base de Datos");
 		        dbSeleccionada = fileChooser.showOpenDialog(pStage);
@@ -180,6 +195,7 @@ public class SearchController extends Application implements Initializable {
 
 		     @Override
 		     public void handle(MouseEvent event) {
+		    	esconderMensajeError();
 		    	DirectoryChooser chooser = new DirectoryChooser();
 		    	chooser.setTitle("Seleccionar Ruta Destino Resultados");
 		    	File ruta = chooser.showDialog(pStage); 
@@ -197,7 +213,8 @@ public class SearchController extends Application implements Initializable {
 
 		     @Override
 		     public void handle(MouseEvent event) {
-		    	if (rutaResultado != null || dbSeleccionada != null) {
+		    	esconderMensajeError();
+		    	if (rutaResultado != null && dbSeleccionada != null) {
 		    		try {
 						cl = new Clasificador();
 						ArrayList<Participante> participantes = LectorArchivo.obtenerDatosParticipantes(dbSeleccionada.getAbsolutePath());
@@ -213,6 +230,15 @@ public class SearchController extends Application implements Initializable {
 						e.printStackTrace();
 					}
 		    		
+		    	}
+		    	else if (rutaResultado == null) {
+		    		errorText.setText("Seleccione el archivo de la base de datos que desea analizar.");
+		    		errorBanner.setStyle("-fx-background-color: #e53935");
+
+		    	}
+		    	else if (dbSeleccionada == null) {
+		    		errorText.setText("Seleccione la carpeta destino para los resultados.");
+		    		errorBanner.setStyle("-fx-background-color: #e53935");		    		
 		    	}
 		        event.consume();
 		     }
