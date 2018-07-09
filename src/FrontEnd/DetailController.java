@@ -4,8 +4,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.io.LineNumberInputStream;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import javax.json.Json;
@@ -13,6 +16,7 @@ import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
 
+import Clasificador.Clasificador;
 import DB.Participante;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -42,19 +46,38 @@ public class DetailController implements Initializable{
     @FXML	private ImageView btnClose;
     @FXML   private AnchorPane topWindow;
     @FXML	private ListView<String> listCursos;
+    @FXML   private Text txtConsejo;
     private ObservableList<String> list = FXCollections.observableArrayList();
     private Participante alumno; 
 	private double xOffset = 0; 
 	private double yOffset = 0;
 	private String rutaResultado; 
+	private Clasificador cl;
+	private int conflictoActual = 0;
+	private List<String> listaConflictos = new ArrayList<>();
     
     
-    public  DetailController(Participante p, Stage pStage, Stage sStage, String rutaResultado) {
+    public  DetailController(Participante p, Stage pStage, Stage sStage, String rutaResultado, Clasificador cl) {
     	this.sStage = sStage;
     	this.pStage = pStage; 
     	alumno = p;
     	this.rutaResultado = rutaResultado.substring(0, rutaResultado.length()-1); 
+    	this.cl = cl; 
     }
+    
+    
+    private String getConflicto(int numeroConflictos) {
+		String r = null;
+		if (numeroConflictos != 0 && (conflictoActual < numeroConflictos)) {
+		    	r = listaConflictos.get(conflictoActual);
+		    	conflictoActual = conflictoActual + 1; 
+		 } 
+		else if (numeroConflictos != 0 && conflictoActual == numeroConflictos) {
+			 	conflictoActual = 0; 
+			 	r = listaConflictos.get(0);
+		 } 
+		return r;		
+	}
     
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -107,9 +130,29 @@ public class DetailController implements Initializable{
             e.printStackTrace();
         }
         
+        // GET CONFLICTOS  
+        System.out.println("LISTA DE CONFLICTOS");
+        listaConflictos = cl.getConflictoPorUsuario(alumno.getNombre(), rutaResultado + "\\Result.json");
+        int numeroConflictos = listaConflictos.size(); 
+        if (numeroConflictos != 0)
+        	txtConsejo.setText("Consejo sobre: " + getConflicto(numeroConflictos));
+        
+        // SET CONFLICTOS
+		txtConsejo.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+
+		     @Override
+		     public void handle(MouseEvent event) {
+		    	 if (numeroConflictos != 0)
+		    		 txtConsejo.setText("Consejo sobre: " + getConflicto(numeroConflictos));
+
+		         event.consume();
+		     }
+		});	
+        
         
         //LISTA DE CURSOS 
     	ObservableList<String> cursos = FXCollections.observableArrayList(alumno.getCurso()); //Posteriormente con for addAll
+    	
     	listCursos.setItems(cursos);
     	
     	

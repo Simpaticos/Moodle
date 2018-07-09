@@ -20,6 +20,7 @@ public class Search extends Application {
 		primaryStage.initStyle(StageStyle.UNDECORATED);
 		primaryStage.setScene(scene);
 		primaryStage.show();
+		mainPane.requestFocus();
 		
 	}
 	

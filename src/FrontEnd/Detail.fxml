@@ -65,17 +65,19 @@
          </children></AnchorPane>
       <AnchorPane layoutX="309.0" layoutY="639.0" prefHeight="110.0" prefWidth="695.0" styleClass="card" AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="309.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="639.0">
          <children>
-            <AnchorPane layoutX="138.0" layoutY="15.0" prefHeight="80.0" prefWidth="420.0" styleClass="wrapper" />
-            <Text id="message" fill="WHITE" layoutX="204.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="message" text="¡Intenta mejorar la habilidad 4!">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Text>
-            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="166.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/alert.png" />
-               </image>
-            </ImageView>
+            <AnchorPane prefHeight="110.0" prefWidth="695.0" styleClass="wrapper">
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="14.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/advice.png" />
+                     </image>
+                  </ImageView>
+                  <Text id="message" fx:id="txtConsejo" fill="WHITE" layoutX="65.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="message" text="No se detectaron consejos de colaboración." wrappingWidth="615.2890625">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+               </children></AnchorPane>
          </children>
       </AnchorPane>
       <AnchorPane layoutX="20.0" layoutY="93.0" prefHeight="659.0" prefWidth="269.0" styleClass="card">

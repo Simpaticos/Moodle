@@ -2,6 +2,12 @@ package Clasificador;
 import java.io.*;
 import java.util.*;
 
+import javax.json.Json;
+import javax.json.JsonArray;
+import javax.json.JsonNumber;
+import javax.json.JsonObject;
+import javax.json.JsonReader;
+
 import weka.core.DenseInstance;
 import weka.core.Instances;
 //import weka.core.Instance;
@@ -56,6 +62,103 @@ public class Clasificador
 		resultados = new Hashtable<>();
 		
 				
+	}
+	
+	
+	public List<String> getConflictoPorUsuario(String nombreParticipante, String rutaArchivoResultado) {
+		File jsonInputFile = new File(rutaArchivoResultado);
+		List<String> listaConflictos = new ArrayList<>();
+		InputStream is;
+		try {
+			is = new FileInputStream(jsonInputFile);
+			JsonReader reader = Json.createReader(is);
+			JsonArray alumnoArray = reader.readArray(); 
+			reader.close();
+			for (int i = 0; i < alumnoArray.size(); i++) {
+				JsonObject jsonObject = alumnoArray.getJsonObject(i); 
+				String nombreJson = jsonObject.getString("name");
+				if (nombreJson.equals(nombreParticipante)) {
+					
+					// REITEGRACION
+					JsonObject aux = jsonObject.getJsonObject("reintegracion"); 
+					double paramentroConflicto = aux.getJsonObject("Nada").getJsonNumber("probabilidad").doubleValue();
+					if (aux.getJsonObject("Argumentacion").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
+						listaConflictos.add("Reintegracion - " + "Argumentacion");
+						else if (aux.getJsonObject("Tarea").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
+							listaConflictos.add("Reintegracion - " + "Tarea");
+						else if (aux.getJsonObject("Motivar").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
+							listaConflictos.add("Reintegracion - " + "Motivar");
+						else if (aux.getJsonObject("Mantenimiento").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
+							listaConflictos.add("Reintegracion - " + "Mantenimiento");
+					
+					// TENSION
+					aux = jsonObject.getJsonObject("tension"); 
+					paramentroConflicto = aux.getJsonObject("Nada").getJsonNumber("probabilidad").doubleValue();
+					if (aux.getJsonObject("Argumentacion").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
+						listaConflictos.add("Tension - " + "Argumentacion");
+						else if (aux.getJsonObject("Reconocimiento").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
+							listaConflictos.add("Tension - " + "Reconocimiento");
+						else if (aux.getJsonObject("Mantenimiento").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
+							listaConflictos.add("Tension - " + "Mantenimiento");
+					
+					// DECISION
+					aux = jsonObject.getJsonObject("decision"); 
+					paramentroConflicto = aux.getJsonObject("Nada").getJsonNumber("probabilidad").doubleValue();
+					if (aux.getJsonObject("Reconocimiento1").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
+						listaConflictos.add("Decision - " + "Reconocimiento1");
+						else if (aux.getJsonObject("Reconocimiento2").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
+							listaConflictos.add("Decision - " + "Reconocimiento2");
+					
+					// EVALUACION
+					aux = jsonObject.getJsonObject("evaluacion"); 
+					paramentroConflicto = aux.getJsonObject("Nada").getJsonNumber("probabilidad").doubleValue();
+					if (aux.getJsonObject("Informar").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
+						listaConflictos.add("Evaluacion - " + "Informar");
+						else if (aux.getJsonObject("Argumentacion").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
+							listaConflictos.add("Evaluacion - " + "Argumentacion");
+						else if (aux.getJsonObject("Tarea").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
+							listaConflictos.add("Evaluacion - " + "Tarea");
+						else if (aux.getJsonObject("Mediar").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
+							listaConflictos.add("Evaluacion - " + "Mediar");
+						else if (aux.getJsonObject("Motivar").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
+							listaConflictos.add("Evaluacion - " + "Motivar");
+						else if (aux.getJsonObject("Mantenimiento").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
+							listaConflictos.add("Evaluacion - " + "Mantenimiento");
+						else if (aux.getJsonObject("Requerir").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
+							listaConflictos.add("Evaluacion - " + "Requerir");
+					
+					// CONTROL
+					aux = jsonObject.getJsonObject("control"); 
+					paramentroConflicto = aux.getJsonObject("Nada").getJsonNumber("probabilidad").doubleValue();
+					if (aux.getJsonObject("Requerir").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
+						listaConflictos.add("Control - " + "Requerir");
+						else if (aux.getJsonObject("Informar").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
+							listaConflictos.add("Control - " + "Informar");
+						else if (aux.getJsonObject("Argumentacion").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
+							listaConflictos.add("Control - " + "Argumentacion");
+						else if (aux.getJsonObject("Tarea").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
+							listaConflictos.add("Control - " + "Tarea");
+						else if (aux.getJsonObject("Mantenimiento").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
+							listaConflictos.add("Control - " + "Mantenimiento");
+					
+					// COMUNICACION
+					aux = jsonObject.getJsonObject("comunicacion"); 
+					paramentroConflicto = aux.getJsonObject("Nada").getJsonNumber("probabilidad").doubleValue();
+					if (aux.getJsonObject("Requerir").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
+						listaConflictos.add("Control - " + "Requerir");
+						else if (aux.getJsonObject("Informar").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
+							listaConflictos.add("Control - " + "Informar");
+						else if (aux.getJsonObject("Tarea").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
+							listaConflictos.add("Control - " + "Tarea");
+					
+					
+				}
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		return listaConflictos; 
+		
 	}
 	
     public static void main(String[] args){

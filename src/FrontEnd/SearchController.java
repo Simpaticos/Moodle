@@ -147,9 +147,13 @@ public class SearchController extends Application implements Initializable {
 						}
 						System.out.println(rowData.getNombre() + "\\R " + rowData.getId());
 					}
-					else {
-			    		errorText.setText("Inicie el analisis de colaboracion.");
+					else if (rutaResultado == null){
+			    		errorText.setText("Seleccione la carpeta destino para los resultados.");
 			    		errorBanner.setStyle("-fx-background-color: #e53935");	
+					} 
+					else {
+			    		errorText.setText("Inicie el analisis de los resultados.");
+			    		errorBanner.setStyle("-fx-background-color: #e53935");
 					}
 
 				}
@@ -231,12 +235,12 @@ public class SearchController extends Application implements Initializable {
 					}
 		    		
 		    	}
-		    	else if (rutaResultado == null) {
+		    	else if (dbSeleccionada == null) {
 		    		errorText.setText("Seleccione el archivo de la base de datos que desea analizar.");
 		    		errorBanner.setStyle("-fx-background-color: #e53935");
 
 		    	}
-		    	else if (dbSeleccionada == null) {
+		    	else if (rutaResultado == null) {
 		    		errorText.setText("Seleccione la carpeta destino para los resultados.");
 		    		errorBanner.setStyle("-fx-background-color: #e53935");		    		
 		    	}
@@ -255,7 +259,7 @@ public class SearchController extends Application implements Initializable {
 		if (p != null) {
 		System.out.println("Paso por el out de second");
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("Detail.fxml"));
-		DetailController c = new DetailController(p, pStage, secondStage, rutaResultado);
+		DetailController c = new DetailController(p, pStage, secondStage, rutaResultado, cl);
 		loader.setController(c);
 		Pane mainPane = (Pane) loader.load();
 		Scene scene = new Scene(mainPane);
