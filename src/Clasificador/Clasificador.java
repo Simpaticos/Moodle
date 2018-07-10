@@ -63,6 +63,16 @@ public class Clasificador
 		
 				
 	}
+	public void guardarRedes()throws Exception {
+		String path = new File(".").getAbsolutePath();
+		path=path.substring(0, path.length()-2)+"/";
+		redes[0].serializeRed(new File(path+"bayesNet/confComunicacion.bayesNet"));
+		redes[1].serializeRed(new File(path+"bayesNet/ConfEvaluacion.bayesNet"));
+		redes[2].serializeRed(new File(path+"bayesNet/ConfControl.bayesNet"));
+		redes[3].serializeRed(new File(path+"bayesNet/ConfDecision.bayesNet"));
+		redes[4].serializeRed(new File(path+"bayesNet/ConfReduccionDeTension.bayesNet"));
+		redes[5].serializeRed(new File(path+"bayesNet/ConfReintegracion.bayesNet"));
+	}
 	
 	
 	public List<String> getConflictoPorUsuario(String nombreParticipante, String rutaArchivoResultado) {
@@ -78,78 +88,33 @@ public class Clasificador
 				JsonObject jsonObject = alumnoArray.getJsonObject(i); 
 				String nombreJson = jsonObject.getString("name");
 				if (nombreJson.equals(nombreParticipante)) {
+					Set<String> jsonObjectConflictos = jsonObject.keySet();
+					for (String conflicto: jsonObjectConflictos) {
+						
+						if (!conflicto.equals("name"))
+							if (!conflicto.equals("id")){
+							System.out.println(conflicto);
+							JsonObject aux = jsonObject.getJsonObject(conflicto); 
+							Set<String> auxSet = aux.keySet();
+							double maximo = 0;
+							String habMasAlta = ""; 
+							for (String jsonO: auxSet) {
+								System.out.println(aux.getJsonObject(jsonO).getJsonNumber("probabilidad").doubleValue());
+								if ( aux.getJsonObject(jsonO).getJsonNumber("probabilidad").doubleValue() >= maximo ) {
+									habMasAlta = jsonO;
+									maximo = aux.getJsonObject(jsonO).getJsonNumber("probabilidad").doubleValue();
+								}
+							}
+							JsonObject jsonHabMasAlta = aux.getJsonObject(habMasAlta);
+							if (!habMasAlta.equals("Nada"))
+								if (jsonHabMasAlta.getJsonNumber("porcentaje").doubleValue() > jsonHabMasAlta.getJsonNumber("porcentaje_ideal_max").doubleValue())
+									listaConflictos.add(conflicto + " - " + habMasAlta + " - Reducir Incidencias");
+								else if (jsonHabMasAlta.getJsonNumber("porcentaje").doubleValue() < jsonHabMasAlta.getJsonNumber("porcentaje_ideal_min").doubleValue())
+									listaConflictos.add(conflicto + " - " + habMasAlta + " - Aumentar Incidencias");
+						}
+					}
+
 					
-					// REITEGRACION
-					JsonObject aux = jsonObject.getJsonObject("reintegracion"); 
-					double paramentroConflicto = aux.getJsonObject("Nada").getJsonNumber("probabilidad").doubleValue();
-					if (aux.getJsonObject("Argumentacion").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
-						listaConflictos.add("Reintegracion - " + "Argumentacion");
-						else if (aux.getJsonObject("Tarea").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
-							listaConflictos.add("Reintegracion - " + "Tarea");
-						else if (aux.getJsonObject("Motivar").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
-							listaConflictos.add("Reintegracion - " + "Motivar");
-						else if (aux.getJsonObject("Mantenimiento").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
-							listaConflictos.add("Reintegracion - " + "Mantenimiento");
-					
-					// TENSION
-					aux = jsonObject.getJsonObject("tension"); 
-					paramentroConflicto = aux.getJsonObject("Nada").getJsonNumber("probabilidad").doubleValue();
-					if (aux.getJsonObject("Argumentacion").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
-						listaConflictos.add("Tension - " + "Argumentacion");
-						else if (aux.getJsonObject("Reconocimiento").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
-							listaConflictos.add("Tension - " + "Reconocimiento");
-						else if (aux.getJsonObject("Mantenimiento").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
-							listaConflictos.add("Tension - " + "Mantenimiento");
-					
-					// DECISION
-					aux = jsonObject.getJsonObject("decision"); 
-					paramentroConflicto = aux.getJsonObject("Nada").getJsonNumber("probabilidad").doubleValue();
-					if (aux.getJsonObject("Reconocimiento1").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
-						listaConflictos.add("Decision - " + "Reconocimiento1");
-						else if (aux.getJsonObject("Reconocimiento2").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
-							listaConflictos.add("Decision - " + "Reconocimiento2");
-					
-					// EVALUACION
-					aux = jsonObject.getJsonObject("evaluacion"); 
-					paramentroConflicto = aux.getJsonObject("Nada").getJsonNumber("probabilidad").doubleValue();
-					if (aux.getJsonObject("Informar").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
-						listaConflictos.add("Evaluacion - " + "Informar");
-						else if (aux.getJsonObject("Argumentacion").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
-							listaConflictos.add("Evaluacion - " + "Argumentacion");
-						else if (aux.getJsonObject("Tarea").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
-							listaConflictos.add("Evaluacion - " + "Tarea");
-						else if (aux.getJsonObject("Mediar").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
-							listaConflictos.add("Evaluacion - " + "Mediar");
-						else if (aux.getJsonObject("Motivar").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
-							listaConflictos.add("Evaluacion - " + "Motivar");
-						else if (aux.getJsonObject("Mantenimiento").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
-							listaConflictos.add("Evaluacion - " + "Mantenimiento");
-						else if (aux.getJsonObject("Requerir").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
-							listaConflictos.add("Evaluacion - " + "Requerir");
-					
-					// CONTROL
-					aux = jsonObject.getJsonObject("control"); 
-					paramentroConflicto = aux.getJsonObject("Nada").getJsonNumber("probabilidad").doubleValue();
-					if (aux.getJsonObject("Requerir").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
-						listaConflictos.add("Control - " + "Requerir");
-						else if (aux.getJsonObject("Informar").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
-							listaConflictos.add("Control - " + "Informar");
-						else if (aux.getJsonObject("Argumentacion").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
-							listaConflictos.add("Control - " + "Argumentacion");
-						else if (aux.getJsonObject("Tarea").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
-							listaConflictos.add("Control - " + "Tarea");
-						else if (aux.getJsonObject("Mantenimiento").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
-							listaConflictos.add("Control - " + "Mantenimiento");
-					
-					// COMUNICACION
-					aux = jsonObject.getJsonObject("comunicacion"); 
-					paramentroConflicto = aux.getJsonObject("Nada").getJsonNumber("probabilidad").doubleValue();
-					if (aux.getJsonObject("Requerir").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
-						listaConflictos.add("Control - " + "Requerir");
-						else if (aux.getJsonObject("Informar").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
-							listaConflictos.add("Control - " + "Informar");
-						else if (aux.getJsonObject("Tarea").getJsonNumber("probabilidad").doubleValue() > paramentroConflicto)
-							listaConflictos.add("Control - " + "Tarea");
 					
 					
 				}
@@ -162,10 +127,10 @@ public class Clasificador
 	}
 	
     public static void main(String[] args){
-    	try {
+    /*	try {
     		Clasificador clasificador = new Clasificador();
-    		/*args[0] direccion de los datos extraidos de la base de datos*/
-    		/*args[1] directorio a donde se escriben los resultados en formato .json*/
+    		//args[0] direccion de los datos extraidos de la base de datos
+    		//args[1] directorio a donde se escriben los resultados en formato .json
     		ArrayList<Participante> participantes = LectorArchivo.obtenerDatosParticipantes(args[0]);
 	    	clasificador.clasificar(participantes);
 	    	String dirRes = args[1];
@@ -174,8 +139,28 @@ public class Clasificador
 	    	JsonWriter.setDir(dirRes);
 	    	JsonWriter.dataToJSON(participantes);
 	    	JsonWriter.resultToJson(clasificador.getResultados());
+	    	clasificador.guardarRedes();
     	}catch(Exception e){e.printStackTrace();}; 
+    	*/
+   // runEntrenamiento();
 }
+    
+    public static void runEntrenamiento() {
+    	
+    	
+    	Clasificador cl;
+		try {
+			cl = new Clasificador();
+			cl.entrenar();
+			cl.guardarRedes();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		System.out.println("termino");
+    	
+    	
+    }
     
     
     public void loadSubhabilityStructure(File dir)throws Exception {
@@ -203,6 +188,46 @@ public class Clasificador
 			}
 		subHabilidades = result;
 		reader.close();
+    }
+    
+    public void entrenar()throws Exception {
+    	for(int i=0;i<6;i++) {
+	    	Instances structure = redes[i].getStructure();
+	    	
+	    	ArrayList<SubhabilidadConMargenes> subH = subHabilidadesPorConflicto(nomConflicto(i));
+	    	for (int j=0;j<subH.size();j++) {
+	    		DenseInstance instance1 = new DenseInstance(redes[i].getStructure().numAttributes());
+		    	DenseInstance instance2 = new DenseInstance(redes[i].getStructure().numAttributes());
+			    instance1.setDataset(structure);
+			    instance2.setDataset(structure);
+	    		instance1.setValue(j+1,"Alto");
+	    		instance2.setValue(j+1,"Bajo");
+	    		for(int k=0;k<subH.size();k++) {
+	    			if(k!=j) {
+	    				instance1.setValue(k+1,"Medio");
+	    	    		instance2.setValue(k+1,"Medio");
+	    			}
+	    		}
+	    		String subHabilidad = subH.get(j).getNombre().split("-")[1];
+	    		instance1.setClassValue(subHabilidad);
+	    		instance2.setClassValue(subHabilidad);
+	    		for(int k=0;k<100;k++) {
+		    		redes[i].trainWithOne(instance1);
+		    		redes[i].trainWithOne(instance2);
+	    		}
+
+	    	}
+    	
+    	}
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
     }
     
     public void clasificar(ArrayList<Participante> p) throws Exception {

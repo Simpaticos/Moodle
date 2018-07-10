@@ -64,7 +64,17 @@ public class ExcelGenerator {
 			scan = new Scanner(new FileInputStream("SubhabilityStructure.txt"));
 			subhabilidades = new ArrayList<>();
 			Subhabilidad sub;
-			String[] nombres = {"juan","herminio","lucas","santi","seba", "nacho", "enzo", "nati", "euge"};
+		//	String[] nombres = {"juan","herminio","lucas","santi","seba", "nacho", "enzo", "nati", "euge"};
+
+			//Instances instances = clas
+			
+			
+			
+			
+			
+			
+			
+			
 			while(scan.hasNextLine()) {
 				String line = scan.nextLine();
 				String[] values = line.split(", ");
@@ -72,12 +82,12 @@ public class ExcelGenerator {
 				subhabilidades.add(sub);
 			}
 			scan.close();
-			for (int i = 0; i<200; i++)
+			for (int i = 0; i<10000; i++)
 			{
 				randSubhability =(int)(Math.random() * ((7) + 1));
 				rand = (int)(Math.random() * ((8) + 1));
 				Subhabilidad sb = subhabilidades.get(randSubhability);
-		        pw.println("Curso1" + "\t" + "disc1" + "\t" + rand + "\t" +  nombres[rand] + "\t" + sb.getNombre() + "/" + sb.getRandomAtrib());
+		 //       pw.println("Curso1" + "\t" + "disc1" + "\t" + rand + "\t" +  nombres[rand] + "\t" + sb.getNombre() + "/" + sb.getRandomAtrib());
 			}
 			pw.close();
 		} catch (IOException e) {
