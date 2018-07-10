@@ -127,7 +127,7 @@ public class Clasificador
 	}
 	
     public static void main(String[] args){
-    /*	try {
+    	try {
     		Clasificador clasificador = new Clasificador();
     		//args[0] direccion de los datos extraidos de la base de datos
     		//args[1] directorio a donde se escriben los resultados en formato .json
@@ -141,8 +141,7 @@ public class Clasificador
 	    	JsonWriter.resultToJson(clasificador.getResultados());
 	    	clasificador.guardarRedes();
     	}catch(Exception e){e.printStackTrace();}; 
-    	*/
-   // runEntrenamiento();
+
 }
     
     public static void runEntrenamiento() {
